@@ -17,15 +17,8 @@ export default function Home() {
       <Story />
 
       <Celebrations />
-      <Hero />
 
-<Countdown />
-
-<Story />
-
-<Celebrations />
-
-<Gallery />
+      <Gallery />
     </main>
   );
 }
