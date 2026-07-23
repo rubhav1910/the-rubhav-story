@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Countdown from "./components/Countdown";
 import Story from "./components/Story";
+import Celebrations from "./components/Celebrations";
 
 export default function Home() {
   return (
@@ -13,6 +14,8 @@ export default function Home() {
       <Countdown />
 
       <Story />
+
+      <Celebrations />
     </main>
   );
 }
