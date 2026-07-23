@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import Countdown from "./components/Countdown";
 import Story from "./components/Story";
 import Celebrations from "./components/Celebrations";
+import Gallery from "./components/Gallery";
 
 export default function Home() {
   return (
@@ -16,6 +17,15 @@ export default function Home() {
       <Story />
 
       <Celebrations />
+      <Hero />
+
+<Countdown />
+
+<Story />
+
+<Celebrations />
+
+<Gallery />
     </main>
   );
 }

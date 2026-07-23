@@ -1,63 +1,88 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Logo from "./ui/Logo";
+import LuxuryButton from "./ui/LuxuryButton";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const links = [
-    "Story",
-    "Celebrations",
-    "Gallery",
-    "Venue",
-    "RSVP",
+    { name: "Story", href: "#story" },
+    { name: "Celebrations", href: "#celebrations" },
+    { name: "Gallery", href: "#gallery" },
+    { name: "Venue", href: "#venue" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/20 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-3">
+    <header
+      className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ${
+        scrolled
+          ? "bg-black/65 backdrop-blur-xl shadow-xl"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-5">
 
-        <h1 className="text-xl md:text-2xl tracking-[0.35em] text-white">
-          THE RUBHAV STORY
-        </h1>
+        <Logo />
 
-        <div className="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest text-white/90">
-
+        {/* Desktop */}
+        <nav className="hidden items-center gap-8 lg:flex">
           {links.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="transition duration-300 hover:text-[#D4B26A]"
+              key={item.name}
+              href={item.href}
+              className="text-white transition hover:text-[var(--champagne-gold)]"
             >
-              {item}
+              {item.name}
             </a>
           ))}
 
-        </div>
+          <LuxuryButton>
+            RSVP
+          </LuxuryButton>
+        </nav>
 
+        {/* Mobile */}
         <button
           onClick={() => setOpen(!open)}
-          className="text-3xl text-white md:hidden"
+          className="text-3xl text-white lg:hidden"
         >
           ☰
         </button>
       </div>
 
       {open && (
-        <div className="border-t border-white/10 bg-black/90 backdrop-blur-xl md:hidden">
-
+        <div className="border-t border-white/10 bg-black/95 lg:hidden">
           {links.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="block border-b border-white/10 px-8 py-4 text-white"
+              key={item.name}
+              href={item.href}
+              className="block px-8 py-5 text-white hover:bg-white/10"
+              onClick={() => setOpen(false)}
             >
-              {item}
+              {item.name}
             </a>
           ))}
 
+          <div className="p-6">
+            <LuxuryButton>
+              RSVP
+            </LuxuryButton>
+          </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 }
