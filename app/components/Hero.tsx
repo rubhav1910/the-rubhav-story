@@ -2,50 +2,56 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen overflow-hidden">
-
+    <section className="relative flex h-screen items-center justify-center overflow-hidden">
+      {/* Background */}
       <Image
-        src="/images/hero.jpg"
-        alt="Vaibhav and Ruchita"
+        src="/Images/hero.jpg"
+        alt="Vaibhav & Ruchita"
         fill
         priority
-        className="object-cover scale-105"
+        className="object-cover object-center scale-105"
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/35 to-black/55" />
+      <div className="absolute inset-0 bg-black/45" />
 
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+      <div className="relative z-20 flex max-w-3xl flex-col items-center px-6 text-center">
 
-        <p className="uppercase tracking-[8px] text-white/80 text-sm mb-5">
+        <p className="mb-4 text-sm uppercase tracking-[8px] text-white/80">
           THE RUBHAV STORY
         </p>
 
-        <h1 className="text-white text-6xl md:text-8xl font-serif leading-tight">
-          Vaibhav
-          <br />
-          <span className="text-[#E9C46A]">&</span>
-          <br />
-          Ruchita
+        <h1 className="text-white leading-none">
+          <span className="block text-6xl md:text-8xl">Vaibhav</span>
+
+          <span className="my-3 block text-5xl text-[#D4B26A]">&</span>
+
+          <span className="block text-6xl md:text-8xl">Ruchita</span>
         </h1>
 
-        <p className="mt-8 text-white/90 text-lg max-w-xl">
-          Every love story is beautiful,
+        <p className="mt-8 max-w-xl text-lg text-white/90">
+          Every love story is beautiful.
           <br />
-          but ours is our favourite.
+          Ours is our favourite.
         </p>
 
-        <div className="mt-10 border border-[#E9C46A] rounded-full px-8 py-3 text-[#E9C46A] backdrop-blur-md">
-          24 • 25 January 2027
-        </div>
+        <button
+          className="mt-10 rounded-full bg-[#D4B26A] px-10 py-4 font-semibold text-black shadow-xl transition hover:scale-105 hover:bg-[#E3C27B]"
+        >
+          Begin The Celebration
+        </button>
 
-        <div className="absolute bottom-10 text-white/70 animate-bounce">
-          ↓ Scroll
-        </div>
+        <p className="mt-6 text-[#D4B26A] tracking-[3px]">
+          24 • 25 January 2027
+        </p>
 
       </div>
 
+      {/* Scroll */}
+      <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 animate-bounce text-white">
+        ↓
+      </div>
     </section>
   );
 }

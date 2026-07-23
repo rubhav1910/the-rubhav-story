@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbf8f3;
+  --foreground: #2b2b2b;
+
+  --royal-lavender: #8f79b8;
+  --soft-lavender: #e9e0f5;
+  --champagne-gold: #d4b26a;
+  --warm-white: #fffdf9;
+
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "Manrope", sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+.gold-text {
+  color: var(--champagne-gold);
+}
+
+.lavender-text {
+  color: var(--royal-lavender);
+}
+
+.section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 6rem 1.5rem;
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    rgba(15, 15, 15, 0.25),
+    rgba(15, 15, 15, 0.45)
+  );
 }
