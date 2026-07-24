@@ -57,8 +57,8 @@ export default function Navbar() {
           <Image
             src="/Images/logo/vr-logo.png"
             alt="VR Logo"
-            width={56}
-            height={56}
+            width={90}
+            height={90}
             className="rounded-full"
             priority
           />
