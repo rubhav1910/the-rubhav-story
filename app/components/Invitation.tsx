@@ -13,12 +13,10 @@ export default function Invitation() {
     setTimeout(() => {
       setOpen(true);
 
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: "auto",
-        });
-      }, 50);
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
 
     }, 900);
   };
@@ -31,66 +29,76 @@ export default function Invitation() {
         fixed
         inset-0
         z-[999]
-        overflow-y-auto
+        overflow-hidden
         transition-all
         duration-1000
-        ${
-          hide
-            ? "opacity-0 scale-105"
-            : "opacity-100 scale-100"
-        }
+        ${hide ? "opacity-0 scale-105" : "opacity-100 scale-100"}
       `}
     >
 
-      {/* Royal Background */}
+      {/* Background */}
 
-      <div className="absolute inset-0 bg-gradient-to-br from-[#241236] via-[#55357D] to-[#8C6AB8]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#241437] via-[#5A3A84] to-[#9270BD]" />
 
-      {/* Gold Glow */}
+      {/* Luxury Glow */}
 
-      <div className="absolute left-1/2 top-[-180px] h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[#D4AF37]/20 blur-[170px]" />
+      <div className="absolute -top-44 left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-[#D4AF37]/20 blur-[180px]" />
 
-      <div className="absolute bottom-[-220px] left-[-120px] h-[450px] w-[450px] rounded-full bg-[#A17BCF]/20 blur-[160px]" />
+      <div className="absolute bottom-[-250px] left-[-120px] h-[500px] w-[500px] rounded-full bg-[#8B6DB7]/20 blur-[170px]" />
 
-      <div className="absolute right-[-120px] top-[120px] h-[350px] w-[350px] rounded-full bg-[#D4AF37]/10 blur-[140px]" />
+      <div className="absolute top-[150px] right-[-140px] h-[420px] w-[420px] rounded-full bg-[#D4AF37]/10 blur-[170px]" />
 
       {/* Decorative Corners */}
 
-      <div className="absolute left-8 top-8 text-[70px] text-[#D4AF37]/20">
+      <div className="hidden md:block absolute left-8 top-8 text-[72px] text-[#D4AF37]/20">
         ❦
       </div>
 
-      <div className="absolute right-8 top-8 rotate-90 text-[70px] text-[#D4AF37]/20">
+      <div className="hidden md:block absolute right-8 top-8 rotate-90 text-[72px] text-[#D4AF37]/20">
         ❦
       </div>
 
-      <div className="absolute bottom-8 left-8 -rotate-90 text-[70px] text-[#D4AF37]/20">
+      <div className="hidden md:block absolute bottom-8 left-8 -rotate-90 text-[72px] text-[#D4AF37]/20">
         ❦
       </div>
 
-      <div className="absolute bottom-8 right-8 rotate-180 text-[70px] text-[#D4AF37]/20">
+      <div className="hidden md:block absolute bottom-8 right-8 rotate-180 text-[72px] text-[#D4AF37]/20">
         ❦
       </div>
 
-      {/* Center Glass Panel */}
+      {/* Center Layout */}
 
-      <div className="relative flex min-h-full items-center justify-center py-8 px-6">
+      <div className="relative flex min-h-screen items-center justify-center px-4 py-6 md:px-8">
 
         <div
           className={`
             w-full
-            max-w-3xl
-            rounded-[44px]
+            max-w-md
+            md:max-w-3xl
+
+            rounded-[28px]
+            md:rounded-[44px]
+
             border
             border-white/20
+
             bg-white/10
+
             backdrop-blur-3xl
-            px-6 md:px-10
-            py-8 md:py-14
-            text-center
+
             shadow-[0_30px_90px_rgba(0,0,0,0.35)]
+
+            px-6
+            md:px-12
+
+            py-8
+            md:py-14
+
+            text-center
+
             transition-all
             duration-1000
+
             ${
               hide
                 ? "scale-110 opacity-0"
@@ -99,23 +107,23 @@ export default function Invitation() {
           `}
         >
 
-          {/* Ornament */}
+          {/* Top Ornament */}
 
-          <div className="flex items-center justify-center gap-5">
+          <div className="flex items-center justify-center gap-4">
 
-            <div className="h-px w-24 bg-[#D4AF37]/40" />
+            <div className="h-px w-16 md:w-24 bg-[#D4AF37]/40" />
 
-            <span className="text-[#D4AF37] text-2xl">
+            <span className="text-[#D4AF37] text-xl md:text-2xl">
               ✦
             </span>
 
-            <div className="h-px w-24 bg-[#D4AF37]/40" />
+            <div className="h-px w-16 md:w-24 bg-[#D4AF37]/40" />
 
           </div>
 
           {/* Logo */}
 
-          <div className="mt-6 md:mt-10 flex justify-center">
+          <div className="mt-8 flex justify-center">
 
             <Image
               src="/Images/logo/vr-logo.png"
@@ -123,34 +131,36 @@ export default function Invitation() {
               width={190}
               height={190}
               priority
-              className="h-auto w-[120px] md:w-[190px]"
+              className="w-[120px] md:w-[190px] h-auto"
             />
 
           </div>
 
-          {/* Title */}
+          {/* Brand */}
 
-          <p className="mt-8 uppercase tracking-[0.55em] text-[#E9C86B] text-sm">
+          <p className="mt-6 text-[10px] md:text-sm uppercase tracking-[0.35em] md:tracking-[0.55em] text-[#E9C86B]">
 
             THE RUBHAV STORY
 
           </p>
 
-          <div className="mx-auto mt-8 h-px w-24 bg-[#D4AF37]/50" />
+          <div className="mx-auto mt-6 h-px w-20 md:w-24 bg-[#D4AF37]/50" />
 
-          <p className="mt-6 md:mt-10 uppercase tracking-[0.45em] text-[#E9C86B] text-sm">
+          <p className="mt-6 md:mt-10 text-[11px] md:text-sm uppercase tracking-[0.35em] text-[#E9C86B]">
 
             Together with their Families
 
           </p>
 
-          <h1 className="mt-6 md:mt-10 font-serif leading-none text-white">
+          {/* Couple Names */}
+
+          <h1 className="mt-7 md:mt-10 font-serif leading-none text-white">
 
             <span className="block text-5xl md:text-8xl">
               Vaibhav
             </span>
 
-            <span className="my-4 block text-4xl text-[#D4AF37]">
+            <span className="my-3 md:my-4 block text-4xl md:text-5xl text-[#D4AF37]">
               &
             </span>
 
@@ -159,9 +169,9 @@ export default function Invitation() {
             </span>
 
           </h1>
-                    {/* Invitation Text */}
+                    {/* Invitation Message */}
 
-          <p className="mx-auto mt-12 max-w-xl text-base md:text-lg leading-7 md:leading-9 text-white/85">
+          <p className="mx-auto mt-8 md:mt-12 max-w-xl px-2 text-[15px] md:text-lg leading-7 md:leading-9 text-white/85">
 
             request the honour of your gracious presence
             as we celebrate the beginning of our forever,
@@ -171,46 +181,65 @@ export default function Invitation() {
 
           {/* Divider */}
 
-          <div className="mx-auto mt-12 h-px w-24 bg-[#D4AF37]/40" />
+          <div className="mx-auto mt-8 md:mt-12 h-px w-20 md:w-24 bg-[#D4AF37]/40" />
 
-          {/* Date */}
+          {/* Wedding Date */}
 
-          <p className="mt-6 md:mt-10 uppercase tracking-[0.45em] text-[#E9C86B] text-sm">
+          <p className="mt-7 md:mt-10 text-xs md:text-sm uppercase tracking-[0.35em] md:tracking-[0.45em] text-[#E9C86B]">
 
             24 • 25 January 2027
 
           </p>
 
-          <p className="mt-4 text-lg text-white/80">
+          {/* Location */}
+
+          <p className="mt-3 text-sm md:text-lg text-white/80">
 
             Ajmer, Rajasthan
 
           </p>
 
-          {/* Button */}
+          {/* Open Invitation Button */}
 
           <button
             onClick={handleOpen}
             className="
               group
               relative
-              mt-14
+              mt-10
+              md:mt-14
+
+              w-full
+
               overflow-hidden
+
               rounded-full
+
               border
-              border-[#E9C86B]
+              border-[#D4AF37]
+
               bg-gradient-to-r
-              from-[#F1D78B]
+              from-[#F3D98D]
               via-[#D4AF37]
-              to-[#B98A27]
-              px-10 md:px-16
-              py-4 md:py-5
+              to-[#B98C2D]
+
+              py-4
+              md:py-5
+
+              text-xs
+              md:text-sm
+
               uppercase
-              tracking-[0.35em]
+              tracking-[0.25em]
+              md:tracking-[0.35em]
+
               text-white
+
               shadow-[0_15px_40px_rgba(212,175,55,0.35)]
+
               transition-all
               duration-500
+
               hover:scale-105
               hover:shadow-[0_20px_60px_rgba(212,175,55,0.55)]
             "
@@ -234,26 +263,25 @@ export default function Invitation() {
             />
 
             <span className="relative">
-              ✦ Open Invitation ✦
+              ✦ OPEN INVITATION ✦
             </span>
 
           </button>
 
           {/* Bottom Ornament */}
 
-          <div className="mt-14 flex items-center justify-center gap-5">
+          <div className="mt-8 md:mt-14 flex items-center justify-center gap-4">
 
-            <div className="h-px w-24 bg-[#D4AF37]/40" />
+            <div className="h-px w-16 md:w-24 bg-[#D4AF37]/40" />
 
-            <span className="text-[#D4AF37] text-2xl">
+            <span className="text-[#D4AF37] text-xl md:text-2xl">
               ✦
             </span>
 
-            <div className="h-px w-24 bg-[#D4AF37]/40" />
+            <div className="h-px w-16 md:w-24 bg-[#D4AF37]/40" />
 
           </div>
-
-        </div>
+                  </div>
 
       </div>
 
