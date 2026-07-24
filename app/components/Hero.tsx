@@ -16,21 +16,23 @@ export default function Hero() {
       />
 
       {/* Dark Overlay */}
-<div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 bg-black/30" />
 
-{/* Left Gradient for text readability */}
-<div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/25 to-transparent" />
+      {/* Left Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/25 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full items-center">
+      <div className="relative z-10 flex h-full items-start pt-36 md:pt-44">
         <div className="mx-auto w-full max-w-7xl px-8 md:px-14">
 
           <div className="max-w-xl">
 
-            <p className="mb-6 uppercase tracking-[8px] text-[var(--gold)] text-xs md:text-sm">
-              THE RUBHAV STORY
+            {/* New Heading */}
+            <p className="mb-8 text-xs md:text-sm uppercase tracking-[0.45em] text-[var(--gold)]">
+              Together with their Families
             </p>
 
+            {/* Couple Names */}
             <h1 className="font-serif leading-[0.95] text-[var(--ivory)]">
 
               <span className="block text-5xl md:text-8xl">
@@ -47,8 +49,10 @@ export default function Hero() {
 
             </h1>
 
+            {/* Divider */}
             <div className="mt-8 h-px w-32 bg-[var(--gold)] opacity-60" />
 
+            {/* Date */}
             <p className="mt-8 text-sm md:text-base uppercase tracking-[5px] text-[var(--gold)]">
               24 • 25 January 2027
             </p>

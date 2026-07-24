@@ -8,7 +8,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
+      setScrolled(window.scrollY > 60);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -43,7 +43,7 @@ export default function Navbar() {
 
           ${
             scrolled
-              ? "backdrop-blur-xl bg-white/15 border border-white/20 shadow-2xl rounded-full py-3 px-8"
+              ? "backdrop-blur-xl bg-[#7B5FA9]/25 border border-[#D4AF37]/30 shadow-2xl rounded-full py-3 px-8"
               : "bg-transparent"
           }
         `}
@@ -57,21 +57,15 @@ export default function Navbar() {
           <Image
             src="/Images/logo/vr-logo.png"
             alt="VR Logo"
-            width={90}
-            height={90}
+            width={64}
+            height={64}
             className="rounded-full"
             priority
           />
 
-          <div>
-            <h1 className="font-serif text-xl tracking-[0.18em] text-white">
-              THE RUBHAV STORY
-            </h1>
-
-            <p className="mt-1 text-xs tracking-[0.35em] text-white/80">
-              VAIBHAV & RUCHITA
-            </p>
-          </div>
+          <h1 className="font-serif text-xl md:text-2xl tracking-[0.18em] text-white whitespace-nowrap">
+            THE RUBHAV STORY
+          </h1>
         </a>
 
         {/* Desktop Menu */}
@@ -87,24 +81,29 @@ export default function Navbar() {
             <a
               key={label}
               href={href}
-              className="
+              className={`
                 relative
                 text-sm
                 tracking-[0.22em]
-                text-white
                 transition-all
                 duration-300
-                hover:text-[#E5C16A]
+
+                ${
+                  scrolled
+                    ? "text-white hover:text-[#F4D06F]"
+                    : "text-white hover:text-[#F4D06F]"
+                }
+
                 after:absolute
                 after:left-0
                 after:-bottom-2
                 after:h-[1px]
                 after:w-0
-                after:bg-[#E5C16A]
+                after:bg-[#F4D06F]
                 after:transition-all
                 after:duration-300
                 hover:after:w-full
-              "
+              `}
             >
               {label}
             </a>

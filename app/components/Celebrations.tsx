@@ -46,10 +46,7 @@ export default function Celebrations() {
     <FadeUp delay={0.2}>
     <section
       id="celebrations"
-      className="
-py-24
-bg-[radial-gradient(circle_at_center,#FBF8FE_0%,#F2EAFB_100%)]
-"
+      className="py-24 bg-[linear-gradient(180deg,#EFE2FA,#E6D5F8)]"
     >
       <div className="mx-auto max-w-3xl px-6">
 

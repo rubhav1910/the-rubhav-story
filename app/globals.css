@@ -1,23 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  /* Main Background */
-  --background: #EFE7F8;
+  --royal: #5B3A8D;
+  --royal-dark: #43246F;
+  --royal-light: #F3EBFC;
 
-  /* Cards */
-  --ivory: #F9F4FC;
+  --gold: #D4AF37;
+  --gold-light: #E8C86A;
 
-  /* Royal Lavender */
-  --royal: #6C3FA5;
-  --royal-light: #9C78C9;
-  --royal-soft: #E9DDF7;
+  --ivory: #FFFDF8;
 
-  /* Royal Gold */
-  --gold: #C9A24E;
-  --gold-light: #E5C97A;
-
-  /* Text */
-  --foreground: #2D2433;
+  --text: #3E3153;
 }
 
 @theme inline {

@@ -72,7 +72,7 @@ export default function Countdown() {
   id="countdown"
   className="
     py-20
-    bg-[radial-gradient(circle_at_top,#F4ECFC_0%,#E9DDF7_60%,#E3D3F6_100%)]
+    bg-[linear-gradient(180deg,#F6F0FD_0%,#E9D9FA_100%)]
   "
 >
       <div className="mx-auto max-w-6xl px-6">
@@ -100,7 +100,7 @@ export default function Countdown() {
                 rounded-3xl
                 border
                 border-[#E8DDC8]
-                bg-[var(--ivory)]
+                bg-white/75 backdrop-blur-lg
                 py-8
                 text-center
                 transition-all

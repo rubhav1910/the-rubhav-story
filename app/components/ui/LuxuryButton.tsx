@@ -11,7 +11,10 @@ export default function LuxuryButton({
     <button
       className={`
         rounded-full
-        bg-[var(--champagne-gold)]
+        bg-gradient-to-r
+from-[#E5C66F]
+via-[#D4AF37]
+to-[#B98B24]
         px-8
         py-3
         font-medium
