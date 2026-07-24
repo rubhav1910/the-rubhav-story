@@ -37,15 +37,22 @@ export default function Countdown() {
     };
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [timeLeft, setTimeLeft] = useState({
+  days: "00",
+  hours: "00",
+  minutes: "00",
+  seconds: "00",
+});
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
+  setTimeLeft(calculateTimeLeft());
 
-    return () => clearInterval(timer);
-  }, []);
+  const timer = setInterval(() => {
+    setTimeLeft(calculateTimeLeft());
+  }, 1000);
+
+  return () => clearInterval(timer);
+}, []);
 
   const items = [
     {

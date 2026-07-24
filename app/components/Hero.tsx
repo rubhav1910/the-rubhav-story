@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative h-screen min-h-[700px] overflow-hidden"
+      className="relative min-h-screen overflow-hidden"
     >
       {/* Background Image */}
       <Image
@@ -12,7 +12,7 @@ export default function Hero() {
         alt="Vaibhav & Ruchita"
         fill
         priority
-        className="object-cover"
+        className="object-cover object-[68%_center] md:object-center"
       />
 
       {/* Dark Overlay */}
@@ -22,28 +22,28 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/25 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full items-start pt-36 md:pt-44">
+      <div className="relative z-10 flex h-full items-start pt-28 sm:pt-32 md:pt-44">
         <div className="mx-auto w-full max-w-7xl px-8 md:px-14">
 
           <div className="max-w-xl">
 
             {/* New Heading */}
-            <p className="mb-8 text-xs md:text-sm uppercase tracking-[0.45em] text-[var(--gold)]">
+            <p className="mb-6 text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.35em] md:tracking-[0.45em] text-[var(--gold)]">
               Together with their Families
             </p>
 
             {/* Couple Names */}
             <h1 className="font-serif leading-[0.95] text-[var(--ivory)]">
 
-              <span className="block text-5xl md:text-8xl">
+              <span className="block text-4xl sm:text-5xl md:text-8xl">
                 Vaibhav
               </span>
 
-              <span className="my-3 block text-4xl md:text-5xl text-[var(--gold)]">
-                &
-              </span>
+              <span className="my-2 block text-3xl sm:text-4xl md:text-5xl text-[var(--gold)]">
+  &
+</span>
 
-              <span className="block text-5xl md:text-8xl">
+              <span className="block text-4xl sm:text-5xl md:text-8xl">
                 Ruchita
               </span>
 
@@ -63,7 +63,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-8 animate-bounce text-[var(--gold)]">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-[var(--gold)]">
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
