@@ -1,3 +1,5 @@
+import FadeUp from "./FadeUp";
+
 export default function Celebrations() {
   const dayOne = [
     {
@@ -41,6 +43,7 @@ export default function Celebrations() {
   ];
 
   return (
+    <FadeUp delay={0.2}>
     <section
       id="celebrations"
       className="
@@ -158,5 +161,6 @@ bg-[radial-gradient(circle_at_center,#FBF8FE_0%,#F2EAFB_100%)]
 
       </div>
     </section>
+    </FadeUp>
   );
 }

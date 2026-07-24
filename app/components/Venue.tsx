@@ -1,7 +1,9 @@
 import Image from "next/image";
+import FadeUp from "./FadeUp";
 
 export default function Venue() {
   return (
+    <FadeUp delay={0.3}>
     <section
       id="venue"
       className="
@@ -98,5 +100,6 @@ export default function Venue() {
 
       </div>
     </section>
+    </FadeUp>
   );
 }

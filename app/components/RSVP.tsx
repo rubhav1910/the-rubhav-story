@@ -1,5 +1,8 @@
+import FadeUp from "./FadeUp";
+
 export default function RSVP() {
   return (
+    <FadeUp delay={0.5}>
     <section
       id="rsvp"
       className="
@@ -60,5 +63,6 @@ export default function RSVP() {
 
       </div>
     </section>
+    </FadeUp>
   );
 }

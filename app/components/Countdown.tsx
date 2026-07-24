@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import FadeUp from "./FadeUp";
 
 export default function Countdown() {
   const weddingDate = new Date("2027-01-24T00:00:00");
@@ -66,6 +67,7 @@ export default function Countdown() {
   ];
 
   return (
+    <FadeUp delay={0.1}>
     <section
   id="countdown"
   className="
@@ -124,5 +126,6 @@ export default function Countdown() {
 
       </div>
     </section>
+    </FadeUp>
   );
 }

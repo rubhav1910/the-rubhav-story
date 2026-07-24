@@ -8,7 +8,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 80);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -16,95 +16,100 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Events", href: "#celebrations" },
-    { name: "Venue", href: "#venue" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "RSVP", href: "#rsvp" },
-  ];
-
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "backdrop-blur-xl bg-white/70 shadow-lg"
-          : "bg-transparent"
-      }`}
+      className={`
+        fixed
+        top-0
+        left-0
+        w-full
+        z-50
+        transition-all
+        duration-500
+        ${scrolled ? "py-3" : "py-6"}
+      `}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+      <div
+        className={`
+          mx-auto
+          max-w-7xl
+          flex
+          items-center
+          justify-start
+          px-6
+          md:px-10
+          transition-all
+          duration-500
 
+          ${
+            scrolled
+              ? "backdrop-blur-xl bg-white/15 border border-white/20 shadow-2xl rounded-full py-3 px-8"
+              : "bg-transparent"
+          }
+        `}
+      >
         {/* Logo */}
-      
+
         <a
-  href="#home"
-  className="flex items-center gap-3"
->
-  <Image
-    src="/Images/logo/vr-logo.svg"
-    alt="VR Monogram"
-    width={56}
-    height={56}
-    priority
-    className="w-12 md:w-14 h-auto"
-  />
+          href="#home"
+          className="flex items-center gap-4 shrink-0"
+        >
+          <Image
+            src="/Images/logo/vr-logo.png"
+            alt="VR Logo"
+            width={56}
+            height={56}
+            className="rounded-full"
+            priority
+          />
 
-  <div className="hidden md:block">
-    <h2 className="font-serif text-2xl tracking-[0.25em] text-white">
-      THE RUBHAV STORY
-    </h2>
+          <div>
+            <h1 className="font-serif text-xl tracking-[0.18em] text-white">
+              THE RUBHAV STORY
+            </h1>
 
-    <p className="mt-1 text-xs uppercase tracking-[0.45em] text-white/80">
-      Vaibhav &amp; Ruchita
-    </p>
-  </div>
-</a>
+            <p className="mt-1 text-xs tracking-[0.35em] text-white/80">
+              VAIBHAV & RUCHITA
+            </p>
+          </div>
+        </a>
 
-        {/* Navigation */}
+        {/* Desktop Menu */}
 
-        <nav className="hidden md:flex items-center gap-10">
-
-          {navItems.map((item) => (
+        <nav className="ml-auto hidden md:flex items-center gap-12">
+          {[
+            ["HOME", "#home"],
+            ["EVENTS", "#celebrations"],
+            ["VENUE", "#venue"],
+            ["GALLERY", "#gallery"],
+            ["RSVP", "#rsvp"],
+          ].map(([label, href]) => (
             <a
-              key={item.name}
-              href={item.href}
+              key={label}
+              href={href}
               className="
                 relative
                 text-sm
-                uppercase
-                tracking-[3px]
-                text-[var(--royal)]
+                tracking-[0.22em]
+                text-white
                 transition-all
                 duration-300
-                hover:text-[var(--gold)]
+                hover:text-[#E5C16A]
                 after:absolute
                 after:left-0
                 after:-bottom-2
-                after:h-[2px]
+                after:h-[1px]
                 after:w-0
-                after:bg-[var(--gold)]
+                after:bg-[#E5C16A]
                 after:transition-all
+                after:duration-300
                 hover:after:w-full
               "
             >
-              {item.name}
+              {label}
             </a>
           ))}
-
         </nav>
-
-        {/* Mobile */}
-
-        <button
-          className="
-            md:hidden
-            text-3xl
-            text-[var(--royal)]
-          "
-        >
-          ☰
-        </button>
-
       </div>
     </header>
   );

@@ -22,7 +22,7 @@ export default function Footer() {
         {/* VR */}
 
         <Image
-  src="/Images/logo/vr-logo.svg"
+  src="/Images/logo/vr-logo.png"
   alt="VR"
   width={140}
   height={140}
