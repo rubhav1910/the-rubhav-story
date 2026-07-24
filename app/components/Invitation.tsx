@@ -31,7 +31,7 @@ export default function Invitation() {
         fixed
         inset-0
         z-[999]
-        overflow-hidden
+        overflow-y-auto
         transition-all
         duration-1000
         ${
@@ -74,7 +74,7 @@ export default function Invitation() {
 
       {/* Center Glass Panel */}
 
-      <div className="relative flex h-full items-center justify-center px-6">
+      <div className="relative flex min-h-full items-center justify-center py-8 px-6">
 
         <div
           className={`
@@ -85,8 +85,8 @@ export default function Invitation() {
             border-white/20
             bg-white/10
             backdrop-blur-3xl
-            px-10
-            py-14
+            px-6 md:px-10
+            py-8 md:py-14
             text-center
             shadow-[0_30px_90px_rgba(0,0,0,0.35)]
             transition-all
@@ -115,7 +115,7 @@ export default function Invitation() {
 
           {/* Logo */}
 
-          <div className="mt-10 flex justify-center">
+          <div className="mt-6 md:mt-10 flex justify-center">
 
             <Image
               src="/Images/logo/vr-logo.png"
@@ -123,7 +123,7 @@ export default function Invitation() {
               width={190}
               height={190}
               priority
-              className="h-auto"
+              className="h-auto w-[120px] md:w-[190px]"
             />
 
           </div>
@@ -138,30 +138,30 @@ export default function Invitation() {
 
           <div className="mx-auto mt-8 h-px w-24 bg-[#D4AF37]/50" />
 
-          <p className="mt-10 uppercase tracking-[0.45em] text-[#E9C86B] text-sm">
+          <p className="mt-6 md:mt-10 uppercase tracking-[0.45em] text-[#E9C86B] text-sm">
 
             Together with their Families
 
           </p>
 
-          <h1 className="mt-10 font-serif leading-none text-white">
+          <h1 className="mt-6 md:mt-10 font-serif leading-none text-white">
 
-            <span className="block text-6xl md:text-8xl">
+            <span className="block text-5xl md:text-8xl">
               Vaibhav
             </span>
 
-            <span className="my-4 block text-5xl text-[#D4AF37]">
+            <span className="my-4 block text-4xl text-[#D4AF37]">
               &
             </span>
 
-            <span className="block text-6xl md:text-8xl">
+            <span className="block text-5xl md:text-8xl">
               Ruchita
             </span>
 
           </h1>
                     {/* Invitation Text */}
 
-          <p className="mx-auto mt-12 max-w-xl text-lg leading-9 text-white/85">
+          <p className="mx-auto mt-12 max-w-xl text-base md:text-lg leading-7 md:leading-9 text-white/85">
 
             request the honour of your gracious presence
             as we celebrate the beginning of our forever,
@@ -175,7 +175,7 @@ export default function Invitation() {
 
           {/* Date */}
 
-          <p className="mt-10 uppercase tracking-[0.45em] text-[#E9C86B] text-sm">
+          <p className="mt-6 md:mt-10 uppercase tracking-[0.45em] text-[#E9C86B] text-sm">
 
             24 • 25 January 2027
 
@@ -203,8 +203,8 @@ export default function Invitation() {
               from-[#F1D78B]
               via-[#D4AF37]
               to-[#B98A27]
-              px-16
-              py-5
+              px-10 md:px-16
+              py-4 md:py-5
               uppercase
               tracking-[0.35em]
               text-white
