@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import SectionHeading from "./ui/SectionHeading";
-import GlassCard from "./ui/GlassCard";
 
 export default function Countdown() {
   const weddingDate = new Date("2027-01-24T00:00:00");
@@ -48,56 +46,79 @@ export default function Countdown() {
     return () => clearInterval(timer);
   }, []);
 
-  const cards = [
-    { value: timeLeft.days, label: "Days" },
-    { value: timeLeft.hours, label: "Hours" },
-    { value: timeLeft.minutes, label: "Minutes" },
-    { value: timeLeft.seconds, label: "Seconds" },
+  const items = [
+    {
+      value: timeLeft.days,
+      label: "Days",
+    },
+    {
+      value: timeLeft.hours,
+      label: "Hours",
+    },
+    {
+      value: timeLeft.minutes,
+      label: "Minutes",
+    },
+    {
+      value: timeLeft.seconds,
+      label: "Seconds",
+    },
   ];
 
   return (
     <section
-      id="countdown"
-      className="relative overflow-hidden bg-[#FBF8F3] py-24"
-    >
-      {/* Background Glow */}
-      <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-[#E9E0F5]/50 blur-3xl" />
+  id="countdown"
+  className="
+    py-20
+    bg-[radial-gradient(circle_at_top,#F4ECFC_0%,#E9DDF7_60%,#E3D3F6_100%)]
+  "
+>
+      <div className="mx-auto max-w-6xl px-6">
 
-      <div className="relative mx-auto max-w-7xl px-6">
+        <div className="text-center">
 
-        <SectionHeading
-          eyebrow="COUNTDOWN"
-          title="Countdown to Forever"
-          description="Every passing moment brings us one step closer to beginning our forever together."
-        />
+          <p className="section-subtitle">
+            Celebration Begins In
+          </p>
 
-        <div className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4">
+          <h2 className="section-title mt-5">
+            Counting Down To Forever
+          </h2>
 
-          {cards.map((card) => (
-            <GlassCard key={card.label}>
-              <div className="p-8 text-center">
-
-                <h3 className="text-5xl font-bold text-[var(--champagne-gold)] transition-transform duration-300 group-hover:scale-110">
-                  {card.value}
-                </h3>
-
-                <p className="mt-4 uppercase tracking-[4px] text-sm text-gray-600">
-                  {card.label}
-                </p>
-
-              </div>
-            </GlassCard>
-          ))}
+          <div className="gold-divider mt-8" />
 
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-14 grid grid-cols-2 gap-5 md:grid-cols-4">
 
-          <div className="mx-auto h-px w-32 bg-[var(--champagne-gold)]/40" />
+          {items.map((item) => (
+            <div
+              key={item.label}
+              className="
+                rounded-3xl
+                border
+                border-[#E8DDC8]
+                bg-[var(--ivory)]
+                py-8
+                text-center
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-xl
+              "
+            >
+              <h3 className="font-serif text-5xl md:text-6xl text-[var(--royal)]">
+                {item.value}
+              </h3>
 
-          <p className="mt-8 text-xl italic text-gray-600">
-            "The best is yet to come."
-          </p>
+              <div className="mx-auto my-5 h-px w-10 bg-[var(--gold)] opacity-50" />
+
+              <p className="uppercase tracking-[4px] text-xs text-[var(--gold)]">
+                {item.label}
+              </p>
+
+            </div>
+          ))}
 
         </div>
 

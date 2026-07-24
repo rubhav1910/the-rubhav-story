@@ -1,16 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fbf8f3;
-  --foreground: #2b2b2b;
+  /* Main Background */
+  --background: #EFE7F8;
 
-  --royal-lavender: #8f79b8;
-  --soft-lavender: #e9e0f5;
-  --champagne-gold: #d4b26a;
-  --warm-white: #fffdf9;
+  /* Cards */
+  --ivory: #F9F4FC;
 
-  --font-heading: "Cormorant Garamond", serif;
-  --font-body: "Manrope", sans-serif;
+  /* Royal Lavender */
+  --royal: #6C3FA5;
+  --royal-light: #9C78C9;
+  --royal-soft: #E9DDF7;
+
+  /* Royal Gold */
+  --gold: #C9A24E;
+  --gold-light: #E5C97A;
+
+  /* Text */
+  --foreground: #2D2433;
 }
 
 @theme inline {
@@ -32,6 +39,8 @@ body {
   overflow-x: hidden;
 }
 
+/* ---------- Typography ---------- */
+
 h1,
 h2,
 h3,
@@ -41,23 +50,92 @@ h6 {
   font-family: var(--font-heading);
 }
 
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  color: var(--royal);
+  line-height: 1.1;
+}
+
+.section-subtitle {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: .45rem;
+  font-size: .78rem;
+}
+
+/* ---------- Utilities ---------- */
+
+.royal-text {
+  color: var(--royal);
+}
+
 .gold-text {
-  color: var(--champagne-gold);
+  color: var(--gold);
 }
 
-.lavender-text {
-  color: var(--royal-lavender);
+.bg-royal-soft {
+  background: var(--royal-soft);
 }
 
-.section {
-  max-width: 1200px;
+.bg-ivory {
+  background: var(--ivory);
+}
+
+.gold-divider {
+  width: 120px;
+  height: 2px;
   margin: auto;
-  padding: 6rem 1.5rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-light),
+    var(--gold),
+    var(--gold-light),
+    transparent
+  );
 }
 
-.hero-overlay {
+/* ---------- Buttons ---------- */
+
+.btn-gold {
   background: linear-gradient(
-    rgba(15, 15, 15, 0.25),
-    rgba(15, 15, 15, 0.45)
+    135deg,
+    var(--gold),
+    var(--gold-light)
   );
+  color: white;
+  transition: .35s;
+  box-shadow: 0 10px 25px rgba(198,161,91,.25);
+}
+
+.btn-gold:hover {
+  transform: translateY(-3px);
+}
+
+/* ---------- Selection ---------- */
+
+::selection {
+  background: var(--royal);
+  color: white;
+}
+
+/* ---------- Scrollbar ---------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #efe7f7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--royal-light);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--royal);
 }

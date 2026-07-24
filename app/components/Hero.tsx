@@ -2,55 +2,80 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative flex h-screen items-center justify-center overflow-hidden">
-      {/* Background */}
+    <section
+      id="home"
+      className="relative h-screen min-h-[700px] overflow-hidden"
+    >
+      {/* Background Image */}
       <Image
         src="/Images/hero.jpg"
         alt="Vaibhav & Ruchita"
         fill
         priority
-        className="object-cover object-center scale-105"
+        className="object-cover"
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/45" />
+      {/* Dark Overlay */}
+<div className="absolute inset-0 bg-black/30" />
+
+{/* Left Gradient for text readability */}
+<div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/25 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-20 flex max-w-3xl flex-col items-center px-6 text-center">
+      <div className="relative z-10 flex h-full items-center">
+        <div className="mx-auto w-full max-w-7xl px-8 md:px-14">
 
-        <p className="mb-4 text-sm uppercase tracking-[8px] text-white/80">
-          THE RUBHAV STORY
-        </p>
+          <div className="max-w-xl">
 
-        <h1 className="text-white leading-none">
-          <span className="block text-6xl md:text-8xl">Vaibhav</span>
+            <p className="mb-6 uppercase tracking-[8px] text-[var(--gold)] text-xs md:text-sm">
+              THE RUBHAV STORY
+            </p>
 
-          <span className="my-3 block text-5xl text-[#D4B26A]">&</span>
+            <h1 className="font-serif leading-[0.95] text-[var(--ivory)]">
 
-          <span className="block text-6xl md:text-8xl">Ruchita</span>
-        </h1>
+              <span className="block text-5xl md:text-8xl">
+                Vaibhav
+              </span>
 
-        <p className="mt-8 max-w-xl text-lg text-white/90">
-          Every love story is beautiful.
-          <br />
-          Ours is our favourite.
-        </p>
+              <span className="my-3 block text-4xl md:text-5xl text-[var(--gold)]">
+                &
+              </span>
 
-        <button
-          className="mt-10 rounded-full bg-[#D4B26A] px-10 py-4 font-semibold text-black shadow-xl transition hover:scale-105 hover:bg-[#E3C27B]"
-        >
-          Begin The Celebration
-        </button>
+              <span className="block text-5xl md:text-8xl">
+                Ruchita
+              </span>
 
-        <p className="mt-6 text-[#D4B26A] tracking-[3px]">
-          24 • 25 January 2027
-        </p>
+            </h1>
 
+            <div className="mt-8 h-px w-32 bg-[var(--gold)] opacity-60" />
+
+            <p className="mt-8 text-sm md:text-base uppercase tracking-[5px] text-[var(--gold)]">
+              24 • 25 January 2027
+            </p>
+
+          </div>
+
+        </div>
       </div>
 
-      {/* Scroll */}
-      <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 animate-bounce text-white">
-        ↓
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-8 animate-bounce text-[var(--gold)]">
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.6}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+
       </div>
     </section>
   );

@@ -1,127 +1,70 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import Image from "next/image";
-import SectionHeading from "./ui/SectionHeading";
-import { galleryImages } from "../data/gallery";
+
+const images = [
+  "/Images/gallery1.jpg",
+  "/Images/gallery2.jpg",
+  "/Images/gallery3.jpg",
+  "/Images/gallery4.jpg",
+];
 
 export default function Gallery() {
-  const [selected, setSelected] = useState<number | null>(null);
-
-  const nextImage = () => {
-    if (selected === null) return;
-    setSelected((selected + 1) % galleryImages.length);
-  };
-
-  const prevImage = () => {
-    if (selected === null) return;
-    setSelected(
-      (selected - 1 + galleryImages.length) % galleryImages.length
-    );
-  };
-
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (selected === null) return;
-
-      if (e.key === "Escape") setSelected(null);
-      if (e.key === "ArrowRight") nextImage();
-      if (e.key === "ArrowLeft") prevImage();
-    };
-
-    window.addEventListener("keydown", handleKey);
-
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [selected]);
-
   return (
-    <>
-      <section
-        id="gallery"
-        className="bg-white py-28 px-6"
-      >
-        <div className="mx-auto max-w-7xl">
+    <section
+      id="gallery"
+      className="bg-[var(--ivory)] py-24"
+    >
+      <div className="mx-auto max-w-7xl px-6">
 
-          <SectionHeading
-            eyebrow="MEMORIES"
-            title="Captured Moments"
-            description="A few beautiful moments from the beginning of our forever."
-          />
+        {/* Heading */}
 
-          <div className="columns-1 gap-6 sm:columns-2 lg:columns-3">
+        <div className="text-center">
 
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                onClick={() => setSelected(index)}
+          <p className="section-subtitle">
+            Our Journey
+          </p>
+
+          <h2 className="section-title mt-5">
+            Captured Moments
+          </h2>
+
+          <div className="gold-divider mt-8" />
+
+        </div>
+
+        {/* Gallery */}
+
+        <div className="mt-16 grid grid-cols-2 gap-5 md:grid-cols-4">
+
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className="
+                group
+                overflow-hidden
+                rounded-[28px]
+                shadow-lg
+              "
+            >
+              <Image
+                src={image}
+                alt={`Gallery ${index + 1}`}
+                width={700}
+                height={900}
                 className="
-                  mb-6
-                  cursor-pointer
-                  overflow-hidden
-                  rounded-3xl
-                  shadow-xl
-                  break-inside-avoid
-                  group
+                  h-full
+                  w-full
+                  object-cover
+                  transition-all
+                  duration-700
+                  group-hover:scale-110
                 "
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={800}
-                  height={1000}
-                  className="
-                    w-full
-                    h-auto
-                    transition-transform
-                    duration-700
-                    group-hover:scale-110
-                  "
-                />
-              </div>
-            ))}
-
-          </div>
+              />
+            </div>
+          ))}
 
         </div>
-      </section>
 
-      {selected !== null && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90">
-
-          <button
-            onClick={() => setSelected(null)}
-            className="absolute right-8 top-8 text-5xl text-white hover:text-[#D4B26A]"
-          >
-            ✕
-          </button>
-
-          <button
-            onClick={prevImage}
-            className="absolute left-6 text-6xl text-white hover:text-[#D4B26A]"
-          >
-            ‹
-          </button>
-
-          <div className="relative h-[85vh] w-[90vw] max-w-6xl">
-
-            <Image
-              src={galleryImages[selected].src}
-              alt={galleryImages[selected].alt}
-              fill
-              className="object-contain"
-            />
-
-          </div>
-
-          <button
-            onClick={nextImage}
-            className="absolute right-6 text-6xl text-white hover:text-[#D4B26A]"
-          >
-            ›
-          </button>
-
-        </div>
-      )}
-    </>
+      </div>
+    </section>
   );
 }

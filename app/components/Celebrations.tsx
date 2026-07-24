@@ -1,107 +1,158 @@
-const events = [
-  {
-    icon: "💍",
-    title: "Roka Ceremony",
-    date: "26 June 2026",
-    status: "Completed",
-    color: "bg-emerald-100 text-emerald-700",
-  },
-  {
-    icon: "💛",
-    title: "Haldi",
-    date: "24 January 2027",
-    status: "Upcoming",
-    color: "bg-yellow-100 text-yellow-700",
-  },
-  {
-    icon: "🌿",
-    title: "Mehendi",
-    date: "24 January 2027",
-    status: "Upcoming",
-    color: "bg-green-100 text-green-700",
-  },
-  {
-    icon: "🎶",
-    title: "Sangeet",
-    date: "24 January 2027",
-    status: "Upcoming",
-    color: "bg-purple-100 text-purple-700",
-  },
-  {
-    icon: "❤️",
-    title: "Wedding",
-    date: "25 January 2027",
-    status: "The Big Day",
-    color: "bg-rose-100 text-rose-700",
-  },
-  {
-    icon: "✨",
-    title: "Reception",
-    date: "25 January 2027",
-    status: "Celebration",
-    color: "bg-indigo-100 text-indigo-700",
-  },
-];
-
 export default function Celebrations() {
+  const dayOne = [
+    {
+      time: "01:00 PM",
+      title: "Ring Ceremony",
+      desc: "Where our forever begins.",
+    },
+    {
+      time: "07:00 PM",
+      title: "Sangeet Soirée",
+      desc: "An evening of music, dance & celebration.",
+    },
+  ];
+
+  const weddingDay = [
+    {
+      time: "10:30 AM",
+      title: "Auspicious Mahurat",
+      desc: "Sacred rituals commence.",
+    },
+    {
+      time: "01:00 PM",
+      title: "Haldi Ceremony",
+      desc: "Blessings in shades of gold.",
+    },
+    {
+      time: "06:30 PM",
+      title: "Baraat Procession",
+      desc: "The groom's grand arrival.",
+    },
+    {
+      time: "07:30 PM",
+      title: "Reception & Dinner",
+      desc: "Dinner, joy & heartfelt wishes.",
+    },
+    {
+      time: "Midnight",
+      title: "Sacred Pheras",
+      desc: "Seven vows for a lifetime.",
+    },
+  ];
+
   return (
     <section
       id="celebrations"
-      className="bg-[#FBF8F3] py-28 px-6"
+      className="
+py-24
+bg-[radial-gradient(circle_at_center,#FBF8FE_0%,#F2EAFB_100%)]
+"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-3xl px-6">
 
-        <p className="text-center uppercase tracking-[6px] text-[#8F79B8] text-sm">
-          WEDDING CELEBRATIONS
-        </p>
+        {/* Heading */}
 
-        <h2 className="mt-4 text-center text-5xl md:text-6xl text-[#2B2B2B]">
-          Every Celebration Has A Story
-        </h2>
+        <div className="text-center">
 
-        <p className="mx-auto mt-6 max-w-2xl text-center text-lg text-gray-600">
-          Join us as we celebrate each beautiful moment leading up to the
-          beginning of our forever.
-        </p>
+          <p className="section-subtitle">
+            Wedding Itinerary
+          </p>
 
-        <div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <h2 className="section-title mt-5">
+            The Celebration Awaits
+          </h2>
 
-          {events.map((event) => (
-            <div
-              key={event.title}
-              className="
-                group
-                rounded-3xl
-                border
-                border-[#D4B26A]/20
-                bg-white
-                p-8
-                shadow-lg
-                transition-all
-                duration-300
-                hover:-translate-y-3
-                hover:shadow-2xl
-              "
-            >
-              <div className="text-5xl">
-                {event.icon}
-              </div>
+          <div className="gold-divider mt-8" />
 
-              <h3 className="mt-6 text-3xl">
-                {event.title}
-              </h3>
+        </div>
 
-              <p className="mt-3 text-gray-500">
-                {event.date}
-              </p>
+        {/* Day One */}
 
-              <span
-                className={`mt-6 inline-block rounded-full px-4 py-2 text-sm font-medium ${event.color}`}
+        <div className="mt-20">
+
+          <div className="text-center">
+
+            <p className="uppercase tracking-[6px] text-xs text-[var(--gold)]">
+              Day One
+            </p>
+
+            <h3 className="mt-3 font-serif text-4xl text-[var(--royal)]">
+              24 January 2027
+            </h3>
+
+          </div>
+
+          <div className="mt-14 space-y-12">
+
+            {dayOne.map((event) => (
+              <div
+                key={event.title}
+                className="text-center"
               >
-                {event.status}
-              </span>
-            </div>
-          ))}
+                <p className="text-xs uppercase tracking-[4px] text-[var(--gold)]">
+                  {event.time}
+                </p>
+
+                <h4 className="mt-2 font-serif text-3xl text-[var(--foreground)]">
+                  {event.title}
+                </h4>
+
+                <p className="mt-3 text-gray-600 italic">
+                  {event.desc}
+                </p>
+
+                <div className="gold-divider mt-10" />
+
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+
+        {/* Wedding Day */}
+
+        <div className="mt-24">
+
+          <div className="text-center">
+
+            <p className="uppercase tracking-[6px] text-xs text-[var(--gold)]">
+              Wedding Day
+            </p>
+
+            <h3 className="mt-3 font-serif text-4xl text-[var(--royal)]">
+              25 January 2027
+            </h3>
+
+          </div>
+
+          <div className="mt-14 space-y-12">
+
+            {weddingDay.map((event, index) => (
+              <div
+                key={event.title}
+                className="text-center"
+              >
+                <p className="text-xs uppercase tracking-[4px] text-[var(--gold)]">
+                  {event.time}
+                </p>
+
+                <h4 className="mt-2 font-serif text-3xl text-[var(--foreground)]">
+                  {event.title}
+                </h4>
+
+                <p className="mt-3 text-gray-600 italic">
+                  {event.desc}
+                </p>
+
+                {index !== weddingDay.length - 1 && (
+                  <div className="gold-divider mt-10" />
+                )}
+
+              </div>
+            ))}
+
+          </div>
 
         </div>
 
