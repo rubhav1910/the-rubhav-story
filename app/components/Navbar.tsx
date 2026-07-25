@@ -50,6 +50,7 @@ export default function Navbar() {
             max-w-7xl
             flex
             items-center
+            justify-between
             px-6
             md:px-10
             transition-all
@@ -63,7 +64,7 @@ export default function Navbar() {
           `}
         >
 
-          {/* Logo */}
+          {/* Logo & Title */}
           <a
             href="#home"
             className="flex items-center gap-3.5 md:gap-5 shrink-0"
@@ -74,19 +75,17 @@ export default function Navbar() {
               width={90}
               height={90}
               priority
-              className="w-16 md:w-[90px] h-auto"
+              className="w-14 sm:w-16 md:w-[90px] h-auto"
             />
 
-            <h1 className="font-serif text-xl md:text-3xl tracking-[0.15em] text-white whitespace-nowrap">
+            <h1 className="font-serif text-base sm:text-xl md:text-3xl tracking-[0.15em] text-white whitespace-nowrap">
               THE RUBHAV STORY
             </h1>
           </a>
 
           {/* Desktop Menu */}
-          <nav className="ml-auto hidden md:flex items-center gap-10">
-
+          <nav className="hidden md:flex items-center gap-10">
             {links.map(([label, href]) => (
-
               <a
                 key={label}
                 href={href}
@@ -111,19 +110,18 @@ export default function Navbar() {
               >
                 {label}
               </a>
-
             ))}
-
           </nav>
 
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMenuOpen(true)}
-            className="ml-auto md:hidden text-white"
+            className="md:hidden text-white p-2 focus:outline-none"
+            aria-label="Open Menu"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8"
+              className="h-7 w-7 sm:h-8 sm:w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -140,7 +138,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <div
         className={`
           fixed
@@ -153,31 +151,30 @@ export default function Navbar() {
 
           ${
             menuOpen
-              ? "opacity-100 visible"
-              : "opacity-0 invisible"
+              ? "opacity-100 visible pointer-events-auto"
+              : "opacity-0 invisible pointer-events-none"
           }
         `}
       >
-
-        {/* Close */}
+        {/* Close Button */}
         <button
           onClick={() => setMenuOpen(false)}
-          className="absolute right-8 top-8 text-white text-5xl"
+          className="absolute right-6 top-6 sm:right-8 sm:top-8 text-white text-5xl focus:outline-none"
+          aria-label="Close Menu"
         >
           ×
         </button>
 
-        <div className="flex h-full flex-col items-center justify-center gap-10">
-
+        <div className="flex h-full flex-col items-center justify-center gap-8 px-6 text-center">
           {links.map(([label, href]) => (
-
             <a
               key={label}
               href={href}
               onClick={() => setMenuOpen(false)}
               className="
                 font-serif
-                text-3xl
+                text-2xl
+                sm:text-3xl
                 tracking-[0.18em]
                 text-white
                 transition
@@ -187,11 +184,8 @@ export default function Navbar() {
             >
               {label}
             </a>
-
           ))}
-
         </div>
-
       </div>
     </>
   );
