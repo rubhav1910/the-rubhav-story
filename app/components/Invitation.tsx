@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export default function Invitation({ onEnterWebsite }) {
+export default function Invitation({ onEnterWebsite }: { onEnterWebsite?: any }) {
   // Step 1: Gate Open State
   const [gateOpen, setGateOpen] = useState(false);
   // Step 2: Full Invitation Exit State
