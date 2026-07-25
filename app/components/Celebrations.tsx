@@ -4,43 +4,37 @@ import FadeUp from "./FadeUp";
 
 const dayOne = [
   {
-    icon: "💍",
     time: "1:00 PM",
     title: "Ring Ceremony",
-    desc: "Where our forever begins.",
+    desc: "Exchanging rings and vows as our hearts lock in for forever.",
   },
   {
-    icon: "🎶",
     time: "6:30 PM",
     title: "Sangeet",
-    desc: "An evening of music, dance & celebration.",
+    desc: "A magical night of rhythm, stellar moves, and joyous celebrations.",
   },
 ];
 
 const weddingDay = [
   {
-    icon: "🌼",
     time: "12:30 PM",
     title: "Haldi Ceremony",
-    desc: "Blessings in shades of gold.",
+    desc: "Drenched in golden turmeric, laughter, and familial blessings.",
   },
   {
-    icon: "🐎",
     time: "6:30 PM",
     title: "Baraat",
-    desc: "The groom's grand arrival.",
+    desc: "The groom's majestic royal procession arrives with pomp and beats.",
   },
   {
-    icon: "🍽️",
     time: "7:30 PM",
     title: "Reception",
-    desc: "Dinner, joy & heartfelt wishes.",
+    desc: "An exquisite evening feast celebrating our union with dear ones.",
   },
   {
-    icon: "🔥",
     time: "Midnight",
     title: "Sacred Pheras",
-    desc: "Seven vows for a lifetime.",
+    desc: "Taking seven holy rounds around the sacred fire for seven lifetimes.",
   },
 ];
 
@@ -49,157 +43,164 @@ export default function Celebrations() {
     <FadeUp delay={0.2}>
       <section
         id="celebrations"
-        className="relative overflow-hidden py-24 bg-gradient-to-b from-[#F7F2FB] via-[#EEE2F8] to-[#F7F2FB]"
+        className="relative overflow-hidden py-24 bg-[#140A20] text-white"
       >
-        <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#D4AF37]/10 blur-[150px]" />
+        {/* Deep Velvet Royal Glows */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#321C54] via-[#140A20] to-[#0A0510]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-[#D4AF37]/15 blur-[170px] pointer-events-none" />
 
-        <div className="relative mx-auto max-w-6xl px-6">
+        <div className="relative mx-auto max-w-4xl px-6">
 
-          <div className="text-center">
-
-            <p className="uppercase tracking-[0.45em] text-sm text-[#C79B42]">
+          {/* Section Heading */}
+          <div className="text-center mb-16">
+            <span className="text-[#D4AF37] text-xl tracking-[0.4em]">✦ ❦ ✦</span>
+            <p className="uppercase tracking-[0.5em] text-xs md:text-sm text-[#F3D98D] mt-3 font-medium">
               Wedding Itinerary
             </p>
-
-            <h2 className="mt-5 font-serif text-4xl md:text-6xl text-[#4C335F]">
+            <h2 className="mt-4 font-serif text-4xl md:text-6xl text-white tracking-wide">
               The Celebration Awaits
             </h2>
-
-            <div className="mx-auto mt-8 h-px w-24 bg-[#C79B42]/60" />
-
-          </div>
-                    {/* Day 1 */}
-
-          <div className="mt-20">
-
-            <div className="mb-12 text-center">
-
-              <p className="uppercase tracking-[0.4em] text-[#C79B42] text-sm">
-                Day One
-              </p>
-
-              <h3 className="mt-3 font-serif text-4xl text-[#4C335F]">
-                24 January 2027
-              </h3>
-
+            <div className="mx-auto mt-6 flex items-center justify-center gap-4">
+              <div className="h-px w-24 bg-gradient-to-r from-transparent to-[#D4AF37]/60" />
+              <span className="text-[#D4AF37] text-xs">◆</span>
+              <div className="h-px w-24 bg-gradient-to-l from-transparent to-[#D4AF37]/60" />
             </div>
-
-            <div className="grid gap-8 md:grid-cols-2">
-
-              {dayOne.map((event) => (
-
-                <div
-                  key={event.title}
-                  className="
-                    group
-                    rounded-[32px]
-                    border
-                    border-[#D4AF37]/20
-                    bg-white/70
-                    backdrop-blur-xl
-                    p-8
-                    shadow-xl
-                    transition-all
-                    duration-500
-                    hover:-translate-y-2
-                    hover:shadow-2xl
-                  "
-                >
-
-                  <div className="text-5xl">
-                    {event.icon}
-                  </div>
-
-                  <p className="mt-6 uppercase tracking-[0.3em] text-xs text-[#C79B42]">
-                    {event.time}
-                  </p>
-
-                  <h4 className="mt-3 font-serif text-3xl text-[#4C335F]">
-                    {event.title}
-                  </h4>
-
-                  <div className="mt-5 h-px w-14 bg-[#D4AF37]/60" />
-
-                  <p className="mt-5 leading-7 text-gray-600">
-                    {event.desc}
-                  </p>
-
-                </div>
-
-              ))}
-
-            </div>
-
           </div>
 
-          {/* Wedding Day */}
+          {/* Royal Palace Scroll Container */}
+          <div className="relative rounded-[40px] border border-[#D4AF37]/40 bg-white/[0.02] backdrop-blur-3xl p-6 sm:p-10 md:p-14 shadow-[0_35px_120px_rgba(0,0,0,0.7)]">
 
-          <div className="mt-24">
+            {/* Luxury Royal Corners */}
+            <span className="absolute top-5 left-5 text-[#D4AF37]/50 text-2xl font-serif">❦</span>
+            <span className="absolute top-5 right-5 text-[#D4AF37]/50 text-2xl font-serif rotate-90">❦</span>
+            <span className="absolute bottom-5 left-5 text-[#D4AF37]/50 text-2xl font-serif -rotate-90">❦</span>
+            <span className="absolute bottom-5 right-5 text-[#D4AF37]/50 text-2xl font-serif rotate-180">❦</span>
 
-            <div className="mb-12 text-center">
+            {/* Day One */}
+            <div>
+              <div className="text-center mb-10">
+                <span className="inline-block px-6 py-1.5 rounded-full border border-[#D4AF37]/50 bg-[#D4AF37]/15 text-[#F3D98D] uppercase tracking-[0.35em] text-xs font-semibold shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                  24 January 2027
+                </span>
+                <h3 className="mt-3 font-serif text-3xl md:text-4xl text-white tracking-wide">
+                  Day One
+                </h3>
+              </div>
 
-              <p className="uppercase tracking-[0.4em] text-[#C79B42] text-sm">
-                Wedding Day
-              </p>
-
-              <h3 className="mt-3 font-serif text-4xl text-[#4C335F]">
-                25 January 2027
-              </h3>
-
+              <div className="grid gap-5">
+                {dayOne.map((event, index) => (
+                  <div
+                    key={index}
+                    className="
+                      group
+                      relative
+                      flex
+                      flex-col
+                      sm:flex-row
+                      sm:items-center
+                      justify-between
+                      gap-4
+                      rounded-2xl
+                      border
+                      border-white/10
+                      bg-gradient-to-r
+                      from-white/[0.06]
+                      to-white/[0.02]
+                      p-5
+                      md:px-8
+                      md:py-6
+                      transition-all
+                      duration-500
+                      hover:border-[#D4AF37]
+                      hover:bg-white/[0.09]
+                      hover:shadow-[0_15px_40px_rgba(212,175,55,0.2)]
+                      hover:-translate-y-1
+                    "
+                  >
+                    <div>
+                      <span className="inline-block text-[11px] uppercase tracking-[0.3em] text-[#F3D98D] font-bold mb-1">
+                        ✦ {event.time}
+                      </span>
+                      <h4 className="font-serif text-2xl md:text-3xl text-white tracking-wide group-hover:text-[#F9E29C] transition-colors">
+                        {event.title}
+                      </h4>
+                    </div>
+                    <p className="text-xs sm:text-sm text-white/70 font-light sm:text-right max-w-[260px] leading-relaxed">
+                      {event.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-2">
+            {/* Divider between days */}
+            <div className="my-12 flex items-center justify-center gap-4">
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
+              <span className="text-[#D4AF37] text-base shrink-0">✦ ❦ ✦</span>
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
+            </div>
 
-              {weddingDay.map((event) => (
+            {/* Wedding Day */}
+            <div>
+              <div className="text-center mb-10">
+                <span className="inline-block px-6 py-1.5 rounded-full border border-[#D4AF37]/50 bg-[#D4AF37]/15 text-[#F3D98D] uppercase tracking-[0.35em] text-xs font-semibold shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                  25 January 2027
+                </span>
+                <h3 className="mt-3 font-serif text-3xl md:text-4xl text-white tracking-wide">
+                  Wedding Day
+                </h3>
+              </div>
 
-                <div
-                  key={event.title}
-                  className="
-                    group
-                    rounded-[32px]
-                    border
-                    border-[#D4AF37]/20
-                    bg-white/70
-                    backdrop-blur-xl
-                    p-8
-                    shadow-xl
-                    transition-all
-                    duration-500
-                    hover:-translate-y-2
-                    hover:shadow-2xl
-                  "
-                >
-
-                  <div className="text-5xl">
-                    {event.icon}
+              <div className="grid gap-5">
+                {weddingDay.map((event, index) => (
+                  <div
+                    key={index}
+                    className="
+                      group
+                      relative
+                      flex
+                      flex-col
+                      sm:flex-row
+                      sm:items-center
+                      justify-between
+                      gap-4
+                      rounded-2xl
+                      border
+                      border-white/10
+                      bg-gradient-to-r
+                      from-white/[0.06]
+                      to-white/[0.02]
+                      p-5
+                      md:px-8
+                      md:py-6
+                      transition-all
+                      duration-500
+                      hover:border-[#D4AF37]
+                      hover:bg-white/[0.09]
+                      hover:shadow-[0_15px_40px_rgba(212,175,55,0.2)]
+                      hover:-translate-y-1
+                    "
+                  >
+                    <div>
+                      <span className="inline-block text-[11px] uppercase tracking-[0.3em] text-[#F3D98D] font-bold mb-1">
+                        ✦ {event.time}
+                      </span>
+                      <h4 className="font-serif text-2xl md:text-3xl text-white tracking-wide group-hover:text-[#F9E29C] transition-colors">
+                        {event.title}
+                      </h4>
+                    </div>
+                    <p className="text-xs sm:text-sm text-white/70 font-light sm:text-right max-w-[260px] leading-relaxed">
+                      {event.desc}
+                    </p>
                   </div>
-
-                  <p className="mt-6 uppercase tracking-[0.3em] text-xs text-[#C79B42]">
-                    {event.time}
-                  </p>
-
-                  <h4 className="mt-3 font-serif text-3xl text-[#4C335F]">
-                    {event.title}
-                  </h4>
-
-                  <div className="mt-5 h-px w-14 bg-[#D4AF37]/60" />
-
-                  <p className="mt-5 leading-7 text-gray-600">
-                    {event.desc}
-                  </p>
-
-                </div>
-
-              ))}
-
+                ))}
+              </div>
             </div>
 
           </div>
 
         </div>
-
       </section>
-
     </FadeUp>
   );
 }
