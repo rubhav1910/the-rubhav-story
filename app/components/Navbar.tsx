@@ -29,7 +29,7 @@ export default function Navbar() {
     ["VENUE", "#venue"],
     ["RSVP", "#rsvp"],
   ];
-  
+
   return (
     <>
       <header
@@ -58,7 +58,7 @@ export default function Navbar() {
 
             ${
               scrolled
-                ? "backdrop-blur-xl bg-[#7B5FA9]/25 border border-[#D4AF37]/30 shadow-2xl rounded-full py-3 px-8"
+                ? "backdrop-blur-2xl bg-[#140A20]/80 border border-[#D4AF37]/40 shadow-[0_10px_30px_rgba(0,0,0,0.5)] rounded-full py-3 px-8"
                 : "bg-transparent"
             }
           `}
@@ -75,35 +75,36 @@ export default function Navbar() {
               width={90}
               height={90}
               priority
-              className="w-14 sm:w-16 md:w-[90px] h-auto"
+              className="w-12 sm:w-14 md:w-16 h-auto object-contain"
             />
 
-            <h1 className="font-serif text-base sm:text-xl md:text-3xl tracking-[0.15em] text-white whitespace-nowrap">
+            <h1 className="font-serif text-base sm:text-lg md:text-2xl tracking-[0.18em] text-white whitespace-nowrap font-light">
               THE RUBHAV STORY
             </h1>
           </a>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
             {links.map(([label, href]) => (
               <a
                 key={label}
                 href={href}
                 className="
                   relative
-                  text-sm
+                  text-xs lg:text-sm
                   tracking-[0.22em]
-                  text-white
+                  text-white/90
+                  font-medium
                   transition-all
                   duration-300
-                  hover:text-[#F4D06F]
+                  hover:text-[#F3D98D]
 
                   after:absolute
                   after:left-0
                   after:-bottom-2
                   after:h-[1px]
                   after:w-0
-                  after:bg-[#F4D06F]
+                  after:bg-[#D4AF37]
                   after:transition-all
                   hover:after:w-full
                 "
@@ -116,7 +117,7 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMenuOpen(true)}
-            className="md:hidden text-white p-2 focus:outline-none"
+            className="md:hidden text-[#F3D98D] p-2 focus:outline-none"
             aria-label="Open Menu"
           >
             <svg
@@ -144,8 +145,8 @@ export default function Navbar() {
           fixed
           inset-0
           z-[999]
-          bg-[#4A2F73]/95
-          backdrop-blur-2xl
+          bg-[#140A20]/95
+          backdrop-blur-3xl
           transition-all
           duration-500
 
@@ -156,16 +157,22 @@ export default function Navbar() {
           }
         `}
       >
+        {/* Glow effect for Mobile Overlay */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[450px] rounded-full bg-[#D4AF37]/15 blur-[160px] pointer-events-none" />
+
         {/* Close Button */}
         <button
           onClick={() => setMenuOpen(false)}
-          className="absolute right-6 top-6 sm:right-8 sm:top-8 text-white text-5xl focus:outline-none"
+          className="absolute right-6 top-6 sm:right-8 sm:top-8 text-[#F3D98D] text-5xl focus:outline-none font-serif"
           aria-label="Close Menu"
         >
           ×
         </button>
 
-        <div className="flex h-full flex-col items-center justify-center gap-8 px-6 text-center">
+        <div className="relative z-10 flex h-full flex-col items-center justify-center gap-8 px-6 text-center">
+
+          <span className="text-[#D4AF37] text-xl tracking-[0.4em] mb-2">✦ ❦ ✦</span>
+
           {links.map(([label, href]) => (
             <a
               key={label}
@@ -175,16 +182,18 @@ export default function Navbar() {
                 font-serif
                 text-2xl
                 sm:text-3xl
-                tracking-[0.18em]
+                tracking-[0.2em]
                 text-white
                 transition
                 duration-300
-                hover:text-[#F4D06F]
+                hover:text-[#F3D98D]
               "
             >
               {label}
             </a>
           ))}
+
+          <div className="mt-4 h-px w-24 bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />
         </div>
       </div>
     </>

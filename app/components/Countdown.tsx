@@ -1,138 +1,78 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import FadeUp from "./FadeUp";
+import { useState, useEffect } from 'react';
 
 export default function Countdown() {
-  const weddingDate = new Date("2027-01-24T00:00:00");
-
-  const calculateTimeLeft = () => {
-    const difference = weddingDate.getTime() - new Date().getTime();
-
-    if (difference <= 0) {
-      return {
-        days: "00",
-        hours: "00",
-        minutes: "00",
-        seconds: "00",
-      };
-    }
-
-    return {
-      days: String(
-        Math.floor(difference / (1000 * 60 * 60 * 24))
-      ).padStart(2, "0"),
-
-      hours: String(
-        Math.floor((difference / (1000 * 60 * 60)) % 24)
-      ).padStart(2, "0"),
-
-      minutes: String(
-        Math.floor((difference / (1000 * 60)) % 60)
-      ).padStart(2, "0"),
-
-      seconds: String(
-        Math.floor((difference / 1000) % 60)
-      ).padStart(2, "0"),
-    };
-  };
-
-  const [timeLeft, setTimeLeft] = useState({
-  days: "00",
-  hours: "00",
-  minutes: "00",
-  seconds: "00",
-});
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-  setTimeLeft(calculateTimeLeft());
+    // Explicit ISO format prevents NaN/00 bugs across all mobile browsers
+    const targetDate = new Date('2027-01-24T00:00:00+05:30').getTime();
 
-  const timer = setInterval(() => {
-    setTimeLeft(calculateTimeLeft());
-  }, 1000);
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
 
-  return () => clearInterval(timer);
-}, []);
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        });
+      }
+    };
 
-  const items = [
-    {
-      value: timeLeft.days,
-      label: "Days",
-    },
-    {
-      value: timeLeft.hours,
-      label: "Hours",
-    },
-    {
-      value: timeLeft.minutes,
-      label: "Minutes",
-    },
-    {
-      value: timeLeft.seconds,
-      label: "Seconds",
-    },
-  ];
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <FadeUp delay={0.1}>
-    <section
-  id="countdown"
-  className="
-    py-20
-    bg-[linear-gradient(180deg,#F6F0FD_0%,#E9D9FA_100%)]
-  "
->
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="countdown" className="relative overflow-hidden py-16 bg-[#140A20] text-center border-y border-[#D4AF37]/30">
+      {/* Background Radial Velvet Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#321C54]/60 via-[#140A20] to-[#0A0510] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[350px] w-[350px] rounded-full bg-[#D4AF37]/10 blur-[130px] pointer-events-none" />
 
-        <div className="text-center">
-
-          <p className="section-subtitle">
-            Celebration Begins In
-          </p>
-
-          <h2 className="section-title mt-5">
-            Counting Down To Forever
-          </h2>
-
-          <div className="gold-divider mt-8" />
-
+      <div className="relative z-10 max-w-4xl mx-auto px-4">
+        {/* Top Ornament */}
+        <div className="flex items-center justify-center gap-3 mb-3 text-[#D4AF37]">
+          <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/60" />
+          <span className="text-sm">✦ ❦ ✦</span>
+          <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/60" />
         </div>
 
-        <div className="mt-14 grid grid-cols-2 gap-5 md:grid-cols-4">
+        {/* Section Title */}
+        <h2 className="font-serif text-2xl md:text-4xl font-light text-white mb-2 tracking-wide">
+          Counting Down To Forever
+        </h2>
 
-          {items.map((item) => (
+        <p className="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-[#F3D98D] mb-8 font-medium">
+          24 • 25 January 2027
+        </p>
+
+        {/* Countdown Grid */}
+        <div className="grid grid-cols-4 max-w-xl mx-auto gap-3 md:gap-6 px-2">
+          {[
+            { label: 'Days', value: timeLeft.days },
+            { label: 'Hours', value: timeLeft.hours },
+            { label: 'Minutes', value: timeLeft.minutes },
+            { label: 'Seconds', value: timeLeft.seconds },
+          ].map((item, index) => (
             <div
-              key={item.label}
-              className="
-                rounded-3xl
-                border
-                border-[#E8DDC8]
-                bg-white/75 backdrop-blur-lg
-                py-8
-                text-center
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:shadow-xl
-              "
+              key={index}
+              className="relative group bg-white/[0.03] backdrop-blur-2xl p-3 md:p-5 rounded-2xl md:rounded-3xl border border-[#D4AF37]/40 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-[#D4AF37]/80 hover:shadow-[0_15px_40px_rgba(212,175,55,0.2)]"
             >
-              <h3 className="font-serif text-5xl md:text-6xl text-[var(--royal)]">
-                {item.value}
-              </h3>
-
-              <div className="mx-auto my-5 h-px w-10 bg-[var(--gold)] opacity-50" />
-
-              <p className="uppercase tracking-[4px] text-xs text-[var(--gold)]">
+              <span className="font-serif text-2xl sm:text-3xl md:text-5xl font-light text-white block tracking-wider">
+                {String(item.value).padStart(2, '0')}
+              </span>
+              <span className="font-sans text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.25em] text-[#F3D98D] font-medium mt-1 md:mt-2 block">
                 {item.label}
-              </p>
-
+              </span>
             </div>
           ))}
-
         </div>
-
       </div>
     </section>
-    </FadeUp>
   );
 }

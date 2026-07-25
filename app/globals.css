@@ -1,80 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --royal: #5B3A8D;
   --royal-dark: #43246F;
   --royal-light: #F3EBFC;
-
   --gold: #D4AF37;
   --gold-light: #E8C86A;
-
   --ivory: #FFFDF8;
 
-  --text: #3E3153;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  --font-heading: var(--font-heading);
-  --font-body: var(--font-body);
-}
-
-html {
-  scroll-behavior: smooth;
+  --background: #0b1315;
+  --foreground: #FFFDF8;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body);
+  background-color: #0b1315 !important;
+  color: #FFFDF8 !important;
+  font-family: var(--font-body), 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* ---------- Typography ---------- */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
+/* Luxury Font Overrides */
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: var(--font-heading), 'Cormorant Garamond', Georgia, serif !important;
 }
 
-.section-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
-  color: var(--royal);
-  line-height: 1.1;
+.font-sans {
+  font-family: var(--font-body), 'Montserrat', sans-serif !important;
 }
 
-.section-subtitle {
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: .45rem;
-  font-size: .78rem;
+/* Clear Default Blue Link Styles */
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-/* ---------- Utilities ---------- */
-
-.royal-text {
-  color: var(--royal);
+/* Gate Animation Helper */
+.gate-transition {
+  will-change: transform, opacity;
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
 }
 
-.gold-text {
-  color: var(--gold);
-}
-
-.bg-royal-soft {
-  background: var(--royal-soft);
-}
-
-.bg-ivory {
-  background: var(--ivory);
-}
-
+/* Gold Divider */
 .gold-divider {
   width: 120px;
   height: 2px;
@@ -90,45 +64,14 @@ h6 {
   );
 }
 
-/* ---------- Buttons ---------- */
-
-.btn-gold {
-  background: linear-gradient(
-    135deg,
-    var(--gold),
-    var(--gold-light)
-  );
-  color: white;
-  transition: .35s;
-  box-shadow: 0 10px 25px rgba(198,161,91,.25);
-}
-
-.btn-gold:hover {
-  transform: translateY(-3px);
-}
-
-/* ---------- Selection ---------- */
-
-::selection {
-  background: var(--royal);
-  color: white;
-}
-
-/* ---------- Scrollbar ---------- */
-
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #efe7f7;
+  background: #080e10;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--royal-light);
+  background: var(--gold);
   border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--royal);
 }
