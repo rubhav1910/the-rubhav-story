@@ -22,38 +22,38 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/25 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full items-start pt-28 sm:pt-32 md:pt-44">
-        <div className="mx-auto w-full max-w-7xl px-8 md:px-14">
+      <div className="relative z-10 flex h-full items-start pt-24 sm:pt-28 md:pt-40">
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-14">
 
           <div className="max-w-xl">
 
             {/* New Heading */}
-            <p className="mb-6 text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.35em] md:tracking-[0.45em] text-[var(--gold)]">
+            <p className="mb-4 text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.35em] md:tracking-[0.45em] text-[var(--gold)]">
               Together with their Families
             </p>
 
-            {/* Couple Names */}
-            <h1 className="font-serif leading-[0.95] text-[var(--ivory)]">
+            {/* Couple Names - Size Increased */}
+            <h1 className="font-serif leading-[0.9] text-[var(--ivory)]">
 
-              <span className="block text-4xl sm:text-5xl md:text-8xl">
+              <span className="block text-5xl sm:text-7xl md:text-9xl">
                 Vaibhav
               </span>
 
-              <span className="my-2 block text-3xl sm:text-4xl md:text-5xl text-[var(--gold)]">
-  &
-</span>
+              <span className="my-2 block text-4xl sm:text-5xl md:text-6xl text-[var(--gold)]">
+                &
+              </span>
 
-              <span className="block text-4xl sm:text-5xl md:text-8xl">
+              <span className="block text-5xl sm:text-7xl md:text-9xl">
                 Ruchita
               </span>
 
             </h1>
 
             {/* Divider */}
-            <div className="mt-8 h-px w-32 bg-[var(--gold)] opacity-60" />
+            <div className="mt-6 h-px w-32 bg-[var(--gold)] opacity-60" />
 
             {/* Date */}
-            <p className="mt-8 text-sm md:text-base uppercase tracking-[5px] text-[var(--gold)]">
+            <p className="mt- text-sm md:text-base uppercase tracking-[5px] text-[var(--gold)]">
               24 • 25 January 2027
             </p>
 

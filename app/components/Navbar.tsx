@@ -29,7 +29,8 @@ export default function Navbar() {
     ["VENUE", "#venue"],
     ["RSVP", "#rsvp"],
   ];
-    return (
+  
+  return (
     <>
       <header
         className={`
@@ -63,27 +64,25 @@ export default function Navbar() {
         >
 
           {/* Logo */}
-
           <a
             href="#home"
-            className="flex items-center gap-3 md:gap-4 shrink-0"
+            className="flex items-center gap-3.5 md:gap-5 shrink-0"
           >
             <Image
-    src="/Images/logo/vr-logo.png"
-    alt="VR Logo"
-    width={70}
-    height={70}
-    priority
-    className="w-14 md:w-[70px] h-auto"
-/>
+              src="/Images/logo/vr-logo.png"
+              alt="VR Logo"
+              width={90}
+              height={90}
+              priority
+              className="w-16 md:w-[90px] h-auto"
+            />
 
-            <h1 className="font-serif text-lg md:text-2xl tracking-[0.15em] text-white whitespace-nowrap">
+            <h1 className="font-serif text-xl md:text-3xl tracking-[0.15em] text-white whitespace-nowrap">
               THE RUBHAV STORY
             </h1>
           </a>
 
           {/* Desktop Menu */}
-
           <nav className="ml-auto hidden md:flex items-center gap-10">
 
             {links.map(([label, href]) => (
@@ -118,7 +117,6 @@ export default function Navbar() {
           </nav>
 
           {/* Mobile Hamburger */}
-
           <button
             onClick={() => setMenuOpen(true)}
             className="ml-auto md:hidden text-white"
@@ -143,7 +141,6 @@ export default function Navbar() {
       </header>
 
       {/* Mobile Menu */}
-
       <div
         className={`
           fixed
@@ -163,7 +160,6 @@ export default function Navbar() {
       >
 
         {/* Close */}
-
         <button
           onClick={() => setMenuOpen(false)}
           className="absolute right-8 top-8 text-white text-5xl"
