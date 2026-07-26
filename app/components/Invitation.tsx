@@ -3,25 +3,23 @@
 import { useState } from "react";
 import Image from "next/image";
 
+// Pre-define sparkle animation keyframes for Tailwind config (optional but clean)
+// If you don't add this to tailwind.config.ts, the code below will just blink simpler.
+
 export default function Invitation({ onEnterWebsite }: { onEnterWebsite?: any }) {
-  // Step 1: Gate Open State
   const [gateOpen, setGateOpen] = useState(false);
-  // Step 2: Full Invitation Exit State
   const [cardExit, setCardExit] = useState(false);
-  // Step 3: Remove Component from DOM State
   const [isRemoved, setIsRemoved] = useState(false);
 
-  // 1. Gate Opening Handler
   const handleGateOpen = (e?: any) => {
     if (e && e.type === "touchstart") {
-      e.preventDefault(); // Prevents double firing on mobile
+      e.preventDefault();
     }
     if (!gateOpen) {
       setGateOpen(true);
     }
   };
 
-  // 2. Final Invitation Close / Enter Website Handler
   const handleFinalOpen = (e?: any) => {
     if (e && e.type === "touchstart") {
       e.preventDefault();
@@ -35,7 +33,7 @@ export default function Invitation({ onEnterWebsite }: { onEnterWebsite?: any })
         top: 0,
         behavior: "auto",
       });
-    }, 1000); // 1s sync with exit transition
+    }, 1000);
   };
 
   if (isRemoved) return null;
@@ -43,29 +41,36 @@ export default function Invitation({ onEnterWebsite }: { onEnterWebsite?: any })
   return (
     <div
       className={`
-        fixed inset-0 z-[999] overflow-y-auto overflow-x-hidden bg-[#140A20] perspective-[1200px]
+        fixed inset-0 z-[999] overflow-y-auto overflow-x-hidden bg-[#120A1F] perspective-[1200px]
         transition-opacity duration-1000 select-none
         ${cardExit ? "opacity-0 pointer-events-none" : "opacity-100"}
       `}
     >
-      {/* Background Lighting & Glow */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#321C54] via-[#140A20] to-[#0A0510] pointer-events-none" />
-      <div className="fixed -top-44 left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-[#D4AF37]/15 blur-[180px] pointer-events-none" />
-      <div className="fixed bottom-[-250px] left-[-120px] h-[500px] w-[500px] rounded-full bg-[#321C54]/40 blur-[170px] pointer-events-none" />
+      {/* Background Lighting & Atmosphere Glow */}
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#3A225C] via-[#1E1332] to-[#120A1F] pointer-events-none" />
+      
+      {/* Breathing Ambient Glow behind the card using standard Tailwind pulses */}
+      <div className="fixed top-0 left-1/2 h-[650px] w-[650px] -translate-x-1/2 rounded-full bg-[#D4AF37]/20 blur-[180px] pointer-events-none animate-pulse-slow" />
 
-      {/* Decorative Corner Motifs */}
-      <div className="hidden md:block fixed left-8 top-8 text-[72px] text-[#D4AF37]/30 z-10 pointer-events-none font-serif">❦</div>
-      <div className="hidden md:block fixed right-8 top-8 rotate-90 text-[72px] text-[#D4AF37]/30 z-10 pointer-events-none font-serif">❦</div>
-      <div className="hidden md:block fixed bottom-8 left-8 -rotate-90 text-[72px] text-[#D4AF37]/30 z-10 pointer-events-none font-serif">❦</div>
-      <div className="hidden md:block fixed bottom-8 right-8 rotate-180 text-[72px] text-[#D4AF37]/30 z-10 pointer-events-none font-serif">❦</div>
+      {/* Floating Magic Lights & Sparkles (Using Tailwind's animate-ping/animate-pulse) */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-[15%] left-[20%] text-[#FFE89C] text-xs animate-pulse">✦</div>
+        <div className="absolute top-[25%] right-[22%] text-[#D4AF37] text-sm animate-ping">✨</div>
+        <div className="absolute top-[65%] left-[15%] text-[#E9C46A] text-base animate-pulse">✦</div>
+        <div className="absolute top-[75%] right-[18%] text-[#FFE89C] text-xs animate-ping">✨</div>
+        <div className="absolute top-[45%] left-[10%] text-[#D4AF37] text-xs animate-pulse">✦</div>
+        <div className="absolute top-[50%] right-[12%] text-[#E9C46A] text-sm animate-ping">✦</div>
+      </div>
 
       {/* ================= INVITATION CARD ================= */}
-      <div className="relative min-h-full w-full flex items-center justify-center px-3 py-6 md:px-4 md:py-12 z-10">
+      <div className="relative min-h-full w-full flex items-center justify-center px-3 py-6 md:px-4 md:py-10 z-10">
         <div
           className={`
-            relative w-full max-w-sm sm:max-w-md md:max-w-3xl rounded-[24px] md:rounded-[44px]
-            border border-[#D4AF37]/40 bg-white/[0.03] backdrop-blur-3xl shadow-[0_35px_120px_rgba(0,0,0,0.7)]
-            px-4 sm:px-6 md:px-12 py-6 md:py-12 text-center transition-all duration-1000 my-auto
+            relative w-full max-w-sm sm:max-w-md md:max-w-lg rounded-[40px] md:rounded-[50px]
+            bg-[#1A0F2E]/95 backdrop-blur-2xl shadow-[0_25px_90px_rgba(0,0,0,0.95)]
+            px-6 sm:px-8 md:px-12 py-10 md:py-14 text-center transition-all duration-1000 my-auto
+            border-[2px] border-[#D4AF37] ring-1 ring-[#D4AF37]/40 ring-offset-8 ring-offset-[#120A1F]
+            overflow-hidden
             ${
               cardExit
                 ? "scale-125 opacity-0"
@@ -75,128 +80,138 @@ export default function Invitation({ onEnterWebsite }: { onEnterWebsite?: any })
             }
           `}
         >
-          {/* Card Corner Motifs */}
-          <span className="absolute top-4 left-4 text-[#D4AF37]/40 text-xl md:text-2xl font-serif pointer-events-none">❦</span>
-          <span className="absolute top-4 right-4 text-[#D4AF37]/40 text-xl md:text-2xl font-serif rotate-90 pointer-events-none">❦</span>
-          <span className="absolute bottom-4 left-4 text-[#D4AF37]/40 text-xl md:text-2xl font-serif -rotate-90 pointer-events-none">❦</span>
-          <span className="absolute bottom-4 right-4 text-[#D4AF37]/40 text-xl md:text-2xl font-serif rotate-180 pointer-events-none">❦</span>
+          {/* ================= TOP HANGING FLOWERS ================= */}
+          <div className="absolute top-0 left-0 w-full pointer-events-none mix-blend-screen opacity-95 z-0">
+            <img 
+              src="/Images/flowers.png" 
+              alt="Hanging Flowers" 
+              className="w-full h-auto object-cover object-top drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]"
+            />
+          </div>
 
-          {/* Top Ornament */}
-          <div className="flex items-center justify-center gap-2 md:gap-3">
-            <div className="h-px w-8 sm:w-12 md:w-24 bg-gradient-to-r from-transparent to-[#D4AF37]/60" />
-            <span className="text-[#D4AF37] text-sm md:text-2xl">✦</span>
-            <div className="h-px w-8 sm:w-12 md:w-24 bg-gradient-to-l from-transparent to-[#D4AF37]/60" />
+          {/* Top Arch Glow Shadow */}
+          <div className="absolute top-0 inset-x-0 h-44 bg-gradient-to-b from-[#120A1F]/70 via-[#120A1F]/30 to-transparent pointer-events-none rounded-t-[40px] z-[5]" />
+
+          {/* Left Hanging Lantern */}
+          <div className="absolute top-8 left-4 md:left-6 flex flex-col items-center pointer-events-none z-10 animate-pulse">
+            <div className="w-[2px] h-14 md:h-20 bg-gradient-to-b from-[#D4AF37] to-[#8c7322]" />
+            <div className="w-6 h-8 md:w-8 md:h-11 rounded-t-full bg-gradient-to-b from-[#D4AF37] via-[#E9C46A] to-[#B38F27] p-0.5 shadow-[0_0_30px_rgba(255,215,0,0.8)] flex items-center justify-center">
+              <div className="w-full h-full rounded-t-full bg-[#FFF5A5] opacity-95 blur-[1px]" />
+            </div>
+            <div className="w-4 h-1.5 bg-[#8c7322] rounded-b-sm" />
+          </div>
+
+          {/* Right Hanging Lantern */}
+          <div className="absolute top-8 right-4 md:right-6 flex flex-col items-center pointer-events-none z-10 animate-pulse">
+            <div className="w-[2px] h-14 md:h-20 bg-gradient-to-b from-[#D4AF37] to-[#8c7322]" />
+            <div className="w-6 h-8 md:w-8 md:h-11 rounded-t-full bg-gradient-to-b from-[#D4AF37] via-[#E9C46A] to-[#B38F27] p-0.5 shadow-[0_0_30px_rgba(255,215,0,0.8)] flex items-center justify-center">
+              <div className="w-full h-full rounded-t-full bg-[#FFF5A5] opacity-95 blur-[1px]" />
+            </div>
+            <div className="w-4 h-1.5 bg-[#8c7322] rounded-b-sm" />
+          </div>
+
+          {/* ================= CARD CONTENT ================= */}
+
+          {/* Top Arch Motif */}
+          <div className="relative z-10 text-[#D4AF37] text-lg md:text-xl mb-1 tracking-widest pt-4 drop-shadow-[0_2px_8px_rgba(212,175,55,0.4)]">
+            ❖ 🏛️ ❖
           </div>
 
           {/* Logo */}
-          <div className="mt-3 md:mt-5 flex justify-center">
+          <div className="relative z-10 mt-6 md:mt-8 flex justify-center">
             <Image
               src="/Images/logo/vr-logo.png"
               alt="VR Logo"
-              width={190}
-              height={190}
+              width={150}
+              height={150}
               priority
-              className="w-[70px] sm:w-[90px] md:w-[170px] h-auto object-contain"
+              className="w-[60px] sm:w-[75px] md:w-[95px] h-auto object-contain drop-shadow-[0_0_20px_rgba(212,175,55,0.7)]"
             />
           </div>
 
           {/* Brand */}
-          <p className="mt-2 md:mt-4 text-[8px] sm:text-[9px] md:text-sm uppercase tracking-[0.25em] md:tracking-[0.55em] text-[#F3D98D] font-medium">
+          <p className="relative z-10 mt-2 text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.35em] md:tracking-[0.45em] text-[#E9C46A] font-medium drop-shadow-md">
             THE RUBHAV STORY
           </p>
 
-          <div className="mx-auto mt-2 md:mt-4 h-px w-12 md:w-24 bg-[#D4AF37]/50" />
+          <div className="relative z-10 mx-auto mt-2 h-[1px] w-14 md:w-20 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
 
-          <p className="mt-2 md:mt-8 text-[9px] sm:text-[10px] md:text-sm uppercase tracking-[0.25em] text-[#F3D98D]">
-            Together with their Families
+          <p className="relative z-10 mt-4 md:mt-5 text-[10px] sm:text-[11px] md:text-xs uppercase tracking-[0.25em] text-[#E9C46A] drop-shadow-md">
+            TOGETHER WITH THEIR FAMILIES
           </p>
 
           {/* Couple Names */}
-          <h1 className="mt-3 md:mt-8 font-serif leading-tight text-white tracking-wide font-light">
-            <span className="block text-3xl sm:text-4xl md:text-8xl font-serif">Vaibhav</span>
-            <span className="my-1 md:my-3 block text-2xl sm:text-3xl md:text-5xl text-[#D4AF37] font-serif">&</span>
-            <span className="block text-3xl sm:text-4xl md:text-8xl font-serif">Ruchita</span>
+          <h1 className="relative z-10 mt-6 md:mt-8 font-serif leading-tight text-[#F8F4ED] tracking-wide font-light">
+            <span className="block text-4xl sm:text-5xl md:text-6xl font-serif drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">Ruchita</span>
+            <span className="my-2 block text-xl sm:text-2xl md:text-3xl text-[#D4AF37] font-serif drop-shadow-[0_2px_8px_rgba(212,175,55,0.5)]">&</span>
+            <span className="block text-4xl sm:text-5xl md:text-6xl font-serif drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">Vaibhav</span>
           </h1>
 
           {/* Invitation Message */}
-          <p className="mx-auto mt-3 md:mt-8 max-w-xl px-1 text-[11px] sm:text-[13px] md:text-lg leading-relaxed text-white/85 font-serif italic font-light">
+          <p className="relative z-10 mx-auto mt-5 md:mt-6 max-w-sm px-4 text-[11px] sm:text-[13px] md:text-sm leading-relaxed text-[#F8F4ED] font-serif italic font-light drop-shadow-md">
             request the honour of your gracious presence as we celebrate the beginning of our forever, surrounded by love, laughter and cherished memories.
           </p>
 
-          {/* Divider */}
-          <div className="mx-auto mt-3 md:mt-8 h-px w-12 md:w-24 bg-[#D4AF37]/40" />
+          {/* Divider Line */}
+          <div className="relative z-10 mx-auto mt-5 md:mt-6 h-[1px] w-14 md:w-20 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
 
           {/* Wedding Date */}
-          <p className="mt-3 md:mt-8 text-[10px] sm:text-[11px] md:text-sm uppercase tracking-[0.2em] md:tracking-[0.45em] text-[#F3D98D] font-medium">
-            24 • 25 January 2027
+          <p className="relative z-10 mt-5 md:mt-6 text-[10px] sm:text-[11px] md:text-xs uppercase tracking-[0.25em] md:tracking-[0.35em] text-[#E9C46A] font-semibold drop-shadow-md">
+            25 JANUARY 2027
           </p>
 
           {/* Location */}
-          <p className="mt-1 md:mt-2 text-xs md:text-lg text-white/80 font-sans font-light">Ajmer, Rajasthan</p>
+          <p className="relative z-10 mt-1 text-xs md:text-sm text-[#F8F4ED]/90 font-sans font-light drop-shadow-md">
+            Ajmer, Rajasthan
+          </p>
 
-          {/* OPEN INVITATION BUTTON */}
-          <button
-            onClick={handleFinalOpen}
-            onTouchStart={handleFinalOpen}
-            disabled={!gateOpen}
-            className="
-              group relative mt-5 md:mt-10 w-full overflow-hidden rounded-full
-              border border-[#D4AF37] bg-[#D4AF37]
-              py-3.5 md:py-5 text-[11px] sm:text-xs md:text-sm font-semibold uppercase tracking-[0.2em] md:tracking-[0.35em] text-[#140A20]
-              shadow-[0_10px_35px_rgba(212,175,55,0.35)] transition-all duration-300
-              active:scale-95 hover:scale-105 hover:shadow-[0_20px_60px_rgba(212,175,55,0.55)] cursor-pointer
-              disabled:opacity-50 disabled:cursor-not-allowed z-20 touch-manipulation
-            "
-          >
-            {/* Shimmer Effect */}
-            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-1000 group-hover:translate-x-full pointer-events-none" />
-            <span className="relative pointer-events-none">✦ OPEN INVITATION ✦</span>
-          </button>
+          {/* TAP TO BEGIN BUTTON */}
+          <div className="relative z-20">
+            <button
+              onClick={handleFinalOpen}
+              onTouchStart={handleFinalOpen}
+              disabled={!gateOpen}
+              className="
+                group relative mt-8 md:mt-10 w-full overflow-hidden rounded-full
+                bg-gradient-to-r from-[#D4AF37] via-[#E9C46A] to-[#D4AF37]
+                py-3.5 md:py-4 text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-[0.25em] md:tracking-[0.35em] text-[#120A1F]
+                shadow-[0_8px_30px_rgba(212,175,55,0.5)] transition-all duration-300
+                active:scale-95 hover:scale-[1.02] hover:shadow-[0_12px_45px_rgba(212,175,55,0.7)] cursor-pointer
+                disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation
+              "
+            >
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-1000 group-hover:translate-x-full pointer-events-none" />
+              <span className="relative pointer-events-none">✦ TAP TO BEGIN ✦</span>
+            </button>
+          </div>
 
-          {/* Bottom Ornament */}
-          <div className="mt-4 md:mt-10 flex items-center justify-center gap-2 md:gap-3">
-            <div className="h-px w-8 sm:w-12 md:w-24 bg-gradient-to-r from-transparent to-[#D4AF37]/60" />
-            <span className="text-[#D4AF37] text-sm md:text-2xl">✦</span>
-            <div className="h-px w-8 sm:w-12 md:w-24 bg-gradient-to-l from-transparent to-[#D4AF37]/60" />
+          {/* Bottom Accent */}
+          <div className="relative z-10 mt-6 text-[#D4AF37]/90 text-xs tracking-[0.3em] font-serif drop-shadow-md">
+            🏰 ✧ 🏰
           </div>
         </div>
       </div>
 
       {/* ================= ROYAL GATES OVERLAY ================= */}
       <div className={`fixed inset-0 z-40 flex pointer-events-none`}>
-        {/* LEFT GATE */}
         <div
           className={`
-            w-1/2 h-full bg-gradient-to-r from-[#0A0510] via-[#140A20] to-[#211135]
+            w-1/2 h-full bg-gradient-to-r from-[#120A1F] via-[#1E1332] to-[#3A225C]
             border-r-2 sm:border-r-4 border-[#D4AF37] shadow-[20px_0_50px_rgba(0,0,0,0.9)]
             flex items-center justify-end pr-2 sm:pr-4 md:pr-10
             transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)]
             ${gateOpen ? "-translate-x-full" : "translate-x-0"}
           `}
-        >
-          <div className="flex flex-col items-center gap-6 opacity-80 pointer-events-none">
-            <div className="w-12 sm:w-16 md:w-28 h-48 sm:h-64 md:h-96 border-2 sm:border-4 border-double border-[#D4AF37]/80 rounded-l-full flex items-center justify-center">
-              <span className="text-[#D4AF37] text-2xl sm:text-3xl md:text-5xl">🏰</span>
-            </div>
-          </div>
-        </div>
-
-        {/* RIGHT GATE */}
+        />
         <div
           className={`
-            w-1/2 h-full bg-gradient-to-l from-[#0A0510] via-[#140A20] to-[#211135]
+            w-1/2 h-full bg-gradient-to-l from-[#120A1F] via-[#1E1332] to-[#3A225C]
             border-l-2 sm:border-l-4 border-[#D4AF37] shadow-[-20px_0_50px_rgba(0,0,0,0.9)]
             flex items-center justify-start pl-2 sm:pl-4 md:pl-10
             transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)]
             ${gateOpen ? "translate-x-full" : "translate-x-0"}
           `}
-        >
-          <div className="flex flex-col items-center gap-6 opacity-80 pointer-events-none">
-            <div className="w-12 sm:w-16 md:w-28 h-48 sm:h-64 md:h-96 border-2 sm:border-4 border-double border-[#D4AF37]/80 rounded-r-full flex items-center justify-center">
-              <span className="text-[#D4AF37] text-2xl sm:text-3xl md:text-5xl">🏰</span>
-            </div>
-          </div>
-        </div>
+        />
       </div>
 
       {/* CENTER ROYAL LOCK BUTTON OVERLAY */}
@@ -210,14 +225,14 @@ export default function Invitation({ onEnterWebsite }: { onEnterWebsite?: any })
               group relative flex flex-col items-center justify-center
               w-32 h-32 sm:w-36 sm:h-36 md:w-48 md:h-48 rounded-full
               border-2 sm:border-4 border-[#D4AF37]
-              bg-gradient-to-b from-[#321C54] to-[#140A20]
-              shadow-[0_0_50px_rgba(212,175,55,0.7)]
+              bg-gradient-to-b from-[#3A225C] to-[#1E1332]
+              shadow-[0_0_70px_rgba(212,175,55,0.7)]
               hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer
               touch-manipulation
             "
           >
-            <span className="text-2xl sm:text-3xl md:text-4xl text-[#D4AF37] animate-pulse pointer-events-none">👑</span>
-            <span className="mt-1 sm:mt-2 text-[10px] sm:text-[11px] md:text-xs tracking-[0.2em] md:tracking-[0.25em] text-[#F3D98D] font-bold uppercase pointer-events-none">
+            <span className="text-2xl sm:text-3xl md:text-4xl text-[#D4AF37] pointer-events-none">👑</span>
+            <span className="mt-1 sm:mt-2 text-[10px] sm:text-[11px] md:text-xs tracking-[0.2em] md:tracking-[0.25em] text-[#E9C46A] font-bold uppercase pointer-events-none">
               Open Gate
             </span>
             <span className="text-[#D4AF37] text-[10px] sm:text-xs mt-0.5 pointer-events-none">✦</span>

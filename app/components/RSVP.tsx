@@ -160,7 +160,7 @@ We would love to attend your wedding celebration!
               {/* Couple Info */}
               <div className="mt-12 pt-8 border-t border-[#D4AF37]/20">
                 <p className="font-serif text-2xl text-white font-light tracking-wide">
-                  Vaibhav & Ruchita
+                  Ruchita & Vaibhav
                 </p>
                 <p className="mt-2 tracking-[0.3em] uppercase text-[#F3D98D] text-xs sm:text-sm font-medium">
                   +91 70141 64334
