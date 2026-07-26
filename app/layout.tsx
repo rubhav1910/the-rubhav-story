@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
+import BackgroundMusic from "./components/BackgroundMusic"; // Background music component import kiya
 
 const headingFont = Cormorant_Garamond({
   subsets: ["latin"],
@@ -26,6 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className={`${headingFont.variable} ${bodyFont.variable}`}>
+        {/* Background Music Player jo puri website par chalega */}
+        <BackgroundMusic />
+        
         {children}
       </body>
     </html>
